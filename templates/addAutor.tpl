@@ -1,5 +1,5 @@
 {include file='templates/header.tpl'}
-<div class="home">
+
 <h2>Agregar autor</h2>
     <form  action="agregarAutor" method="post"  class="mb-3">
         <input type="text" placeholder="Nombre" name="nameAutores" id="nameAutores"  required >

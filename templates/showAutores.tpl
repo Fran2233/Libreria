@@ -1,5 +1,5 @@
 {include file='templates/header.tpl'}
-<div class="home">  
+  
     <h2>Autores:</h2>
     <h1>{$error}</h1>
         {if $error === 'Este autor tiene libros asignados'}
@@ -28,7 +28,7 @@
         {/foreach}
 
 </ul>
-</div>
+
 
 
 

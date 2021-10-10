@@ -1,5 +1,5 @@
 {include file='templates/header.tpl'}
-<div class="home">
+
     <h2>Agregar libro</h2>
                 <form  action="createLibro" method="post"  class="mb-3">
                     <input type="text" placeholder="Título" name="titulo" id="titulo"  required > 
@@ -12,5 +12,5 @@
                     <input type="text" placeholder="Género" name="genero" id="genero"> 
                     <input type="submit"  value="Enviar" class="btn btn-success btn-sm">    
                 </form>
-</div>
+
 {include file='templates/footer.tpl'}

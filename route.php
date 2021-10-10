@@ -20,8 +20,6 @@ $libreriaController = new libreriaController();
 $autoresController = new autoresController();
 $userController = new usuariosController();
 
-
-
 // determina que camino seguir según la acción
 switch ($params[0]) {
     case 'login':
@@ -67,7 +65,6 @@ switch ($params[0]) {
     case 'showHomePublic':
             $libreriaController->showHomePublic();
          break;
-
 
         default:
 

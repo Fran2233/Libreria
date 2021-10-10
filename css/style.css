@@ -1,5 +1,5 @@
 body {
-    background: #ffbc01;
+    background: #3bb5eed7;
     margin: 0px;
 }
 
@@ -39,8 +39,6 @@ h4 {
 .showOculto{
     display: none;
 }
-
-
 
 .form-content{
     background-image: url(../images/lib.jpeg);
@@ -117,11 +115,14 @@ button a{
 }
 
 
+/* .form-content{
+    border-radius:10px;
+    margin:auto;
+    background: linear-gradient(#55f8f8, #13a2e4d7);
+} */
 
-
-.home h1{
-    /* background: linear-gradient(#55f8f8, #13a2e4d7); */
-    color: black;
+.home{
+    background: linear-gradient(#55f8f8, #13a2e4d7);
 }
 
 .title-error{
@@ -133,14 +134,4 @@ button a{
 
 .backInicio:hover{
     color: rgb(231, 41, 168);
-}
-
-.detalle h1,h2,h3{
-    color: black;
-}
-
-.detalle{
-    background-color: #ffbc01;
-    border-radius: 2rem;
-    display: grid;
 }

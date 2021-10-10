@@ -10,19 +10,12 @@ class libreriaView{
         $this->smarty = new Smarty();
     }
 
-
-    public function showHome(){
-        
-    }
-
     public function showLibros($list,$autores,$error=""){
         $this->smarty->assign('error',$error);
         $this->smarty->assign('list',$list);
         $this->smarty->assign('autores',$autores);
         $this->smarty->display('templates/showLibros.tpl');
     }
-
-
 
     public function mostrarAutores($autores,$error = ""){
         $this->smarty->assign('error',$error);
@@ -31,7 +24,6 @@ class libreriaView{
     }
 
 
-        // Muestro libro seleccionado por ID
     public function mostrarLibroID($libro){
         $this->smarty->assign('libro',$libro);
         $this->smarty->display('templates/detallesLibro.tpl');
