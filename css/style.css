@@ -1,5 +1,6 @@
+
 body {
-    background: #3bb5eed7;
+    background: #3C9999;
     margin: 0px;
 }
 
@@ -18,7 +19,7 @@ ul li {
 }
 
 a {
-    color: #101213;
+    color: white;
     text-decoration: none;
 }
 
@@ -85,17 +86,17 @@ h4 {
 
 
 button a{
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 .backInicio{
-    color: rgb(255, 255, 255);
+    color: #3C9999;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
     font-size: 1.4rem;
-    background-color: black;
+    background-color: #BEEE5D;
     border-radius: 1rem;
     padding:1px;
     transition: all 0.9s linear;
@@ -115,19 +116,22 @@ button a{
 }
 
 
-
+/* .form-content{
+    border-radius:10px;
+    margin:auto;
+    background: linear-gradient(#55f8f8, #13a2e4d7);
+} */
 
 .home{
-    background: linear-gradient(#55f8f8, #13a2e4d7);
+    background: linear-gradient(#50adad,#80dddd);
 }
 
 .title-error{
     font-size: 50px;
-    color: rgb(0, 0, 0);
+    color: black;
     text-anchor: middle;
     font-style: italic;
 }
 
 .backInicio:hover{
-    color: rgb(231, 41, 168);
-}
+    color: black;
