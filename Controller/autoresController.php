@@ -32,7 +32,7 @@ public function agregarAutor(){
     $nameAutor = $_POST['nameAutores'];
     $existe =$this->checkName($nameAutor);
     if($existe){
-        $this->view->showError("Ya existe ingrese otro nombre");
+        $this->view->showError("Ya existe ese autor porfavor ingrese otro nombre");
     }else{
         $this->modelAutores->crearAutor($_POST['nameAutores'],$_POST['nacionalidad']);
         $this->view->mostrarHome();
