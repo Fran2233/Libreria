@@ -1,0 +1,153 @@
+body {
+    background: #ffbc01;
+    margin: 0px;
+}
+
+ul {
+    padding-left: 2rem;
+    list-style-type: none;
+}
+  
+ul li {
+    padding-left: 3rem;
+    background-image: url(../images/book.png);
+    background-position: 0 0;
+    background-size: 1.8rem 1.8rem;
+    background-repeat: no-repeat;
+    
+}
+
+a {
+    color: #101213;
+    text-decoration: none;
+}
+
+.hidden{
+    display: none;
+}
+
+h2, h1, h3 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+h4 {
+    text-align: center;
+    color: rgb(33, 35, 41);
+}
+
+.showOculto{
+    display: none;
+}
+
+
+
+.form-content{
+    background-image: url(../images/lib.jpeg);
+    background-color: #ffc90e;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 20px;
+    
+}
+
+.form-signin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "email-signin                       email-signin"
+        "signin_password                    signin_password"
+    ;
+}
+
+.form-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "email-login                       email-login                   "
+        "login_password                    login_password                "               
+        ;
+}
+
+.email-signin {
+    grid-area: email-signin;
+}
+.signin_password {
+    grid-area: signin_password;
+}
+
+.email-login {
+    grid-area: email-login;
+}
+.login_password {
+    grid-area: login_password;
+}
+
+
+button a{
+    color: black;
+    text-decoration: none;
+}
+
+.backInicio{
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    background-color: black;
+    border-radius: 1rem;
+    padding:1px;
+    transition: all 0.9s linear;
+    text-transform: capitalize;
+}
+
+.libroPorAutor li{
+    padding-left: 2rem;
+    width: 50%;
+}
+
+.divError{
+    background-image: url(../images/error-404.jpg);
+    min-width: 100%;
+    min-height:2000px;
+    position:relative;
+}
+
+
+
+
+/* .form-content{
+    border-radius:10px;
+    margin:auto;
+    background: linear-gradient(#55f8f8, #13a2e4d7);
+} */
+
+.home h1{
+    /* background: linear-gradient(#55f8f8, #13a2e4d7); */
+    color: black;
+}
+
+.title-error{
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    text-anchor: middle;
+    font-style: italic;
+}
+
+.backInicio:hover{
+    color: rgb(231, 41, 168);
+}
+
+.detalle h1,h2,h3{
+    color: black;
+}
+
+.detalle{
+    background-color: #ffc90e;
+    border-radius: 2rem;
+    display: grid;
+}
