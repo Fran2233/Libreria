@@ -6,7 +6,7 @@
     <h1>{$error}</h1>
     <a href="logout" class="btn btn-outline-secondary bt-sm">Logout</a>
    
-    <ul>
+    <ul id="listaLibros">
 
 
         {* RECORRO LISTA DE LIBROS *}

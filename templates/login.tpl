@@ -18,7 +18,7 @@
             {* Si manda un error se muestra aca, por default esta vacio *}
         <h4>{$default}</h4>
 
-        <h3 class="login">Continuar como invitado</h3>
+        <h3 class="login invitado">Continuar como invitado</h3>
         <a href="showHomePublic" class="backInicio">Continuar</a>
 
 

@@ -133,7 +133,7 @@ button a{
 
 
 .autores{
-    text-align:initial;
+    text-align:center;
     font-weight: bold;
 }
 
@@ -147,8 +147,31 @@ button a{
     font-weight: bold;
 }
 
-#email-signin,#signin_password,#email-login,#login_password, .btn-primary{
+#titulo,#autor,#anio_publicado,#genero,#nameAutores,#email-signin,#signin_password,#email-login,#login_password, .btn-primary{
     border-radius: 2rem;
+}
+
+.form-signin,.form-login{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 26%;
+}
+
+.invitado{
+    text-align: initial;
+}
+
+#listaLibros,#listAutores{
+    padding-left: 30%;
+}
+
+.mb-3{
+    padding-left: 30%;
+}
+
+.inputAutores{
+    padding-left: 0;
 }
 
 

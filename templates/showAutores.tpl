@@ -6,7 +6,7 @@
             <a href="home" class="backInicio">Volver al inicio</a>
         {/if}
       
-<ul>
+<ul id="listAutores">
     
         
         {* Muestro Autores *}
@@ -19,7 +19,7 @@
                 <a href="deleteAutor/{$autor->nameAutores}">Borrar</a>
         </button>
         {* Editar Autor *}
-        <form  action="editAutor" method="post"  class="mb-3">
+        <form  action="editAutor" method="post"  class="mb-3 inputAutores">
             <input type="text" value="{$autor->id_autor}" name="id_autor" id="id_autor"  class="hidden" >
             <input type="text" placeholder="Nombre" name="nameAutores" id="nameAutores"  required >
             <input type="submit"  value="Editar" class="btn btn-info btn-sm">
