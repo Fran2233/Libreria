@@ -1,6 +1,6 @@
 {include file='templates/header.tpl'}
   
-    <h2>Autores:</h2>
+    <h2 class="autores">Autores:</h2>
     <h1>{$error}</h1>
         {if $error === 'Este autor tiene libros asignados'}
             <a href="home" class="backInicio">Volver al inicio</a>

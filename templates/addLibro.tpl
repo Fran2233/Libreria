@@ -1,6 +1,6 @@
 {include file='templates/header.tpl'}
 
-    <h2>Agregar libro</h2>
+    <h2 id="addLibro">Agregar libro</h2>
                 <form  action="createLibro" method="post"  class="mb-3">
                     <input type="text" placeholder="Título" name="titulo" id="titulo"  required > 
                     <select type="text" name="autor" id="autor" >
