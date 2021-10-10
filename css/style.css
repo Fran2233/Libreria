@@ -44,7 +44,6 @@ h4 {
 
 .form-content{
     background-image: url(../images/lib.jpeg);
-    background-color: #ffc90e;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -147,7 +146,7 @@ button a{
 }
 
 .detalle{
-    background-color: #ffc90e;
+    background-color: #ffbc01;
     border-radius: 2rem;
     display: grid;
 }
