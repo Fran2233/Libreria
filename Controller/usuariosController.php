@@ -1,24 +1,30 @@
 <?php
 require_once "./Model/usuariosModel.php";
 require_once "./View/loginView.php";
+require_once "./View/libreriaView.php";
 
 class usuariosController{
+    private $viewLibreria;
     private $view;
     private $model;
-    function __construct()
+    public function __construct()
     {
+        $this->viewLibreria = new libreriaView();
         $this->model = new usuariosModel();
         $this->view = new loginView();
     }
 
-function login(){
+
+    // Muestra el login
+public function login(){
     $this->view->showLogin();
 }
 
+    
 
 
 // Verigica que el password ingresado coincida con el guardado en la base de datos de usuarios
-function verifyLogin(){
+public function verifyLogin(){
       if(!empty($_POST['email'])&& !empty($_POST['user_password'])){
           $email = $_POST['email'];
           $password = $_POST['user_password'];
@@ -40,7 +46,7 @@ function verifyLogin(){
       }
 
     //   Desconectar sesion
-      function logout(){
+      public function logout(){
           session_start();
           session_destroy();
           $this->view->showLogin("Te desconectaste");
@@ -48,10 +54,26 @@ function verifyLogin(){
 
 
       // Registro user
-function registrarUser(){
+public function registrarUser(){
     $password = password_hash($_POST['user_password'],PASSWORD_BCRYPT);
-    $this->model->registration($_POST['email'],$password);
-    $this->view->showLogin("¡Registrado con exito!");
+    $existe = $this->checkUser($_POST['email']);
+    if($existe){    
+        $this->viewLibreria->showError("Ese nombre ya esta en uso!");
+    }else{
+         $this->model->registration($_POST['email'],$password);
+        $this->view->showLogin("¡Registrado con exito!");
+    }
+}
+
+
+// Chequear que el usuario no se encuentre registrado
+public function checkUser($user){
+    $lista = $this->model->listaCompleta();
+    foreach($lista as $list){
+        if($list->email === $user){
+            return true;
+        }
+    }
 }
 
 
