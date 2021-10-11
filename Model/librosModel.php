@@ -63,18 +63,6 @@ function editarLibro($id,$titulo,$autor,$anio_publicado,$genero){
 }
 
 
-// Registro usuario
-function registration($email,$user_password){
-    $obtener = $this->db->prepare("INSERT INTO usuarios(email,user_password) VALUES(?,?)");
-    $obtener->execute(array($email,$user_password));
-}
 
-//Obtener usuario
-function getUser($email){
-    $obtener = $this->db->prepare("SELECT * FROM usuarios WHERE email=?");
-    $obtener->execute(array($email));
-    $usuario = $obtener->fetch(PDO::FETCH_OBJ);
-    return $usuario;
-}
 
 }
