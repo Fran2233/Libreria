@@ -37,7 +37,6 @@ public function agregarAutor(){
         $this->modelAutores->crearAutor($_POST['nameAutores'],$_POST['nacionalidad']);
         $this->view->mostrarHome();
     }
-    
 }
 
 
@@ -48,13 +47,11 @@ public function deleteAutor($autor){
     $existe = $this->checkLibroAutor($autor);
     if($existe){
         $this->view->showError("Este autor tiene libros asignados");
-        
     }
     else{
         $this->modelAutores->borrarAutor($autor);
         $this->view->mostrarHome();
     }
-    
 }
 
 
@@ -69,7 +66,6 @@ public function editAutor(){
         $this->modelAutores->editarAutor($_POST['id_autor'],$_POST['nameAutores']);
         $this->view->mostrarHome();
     }
-    
 }
 
 // Chequear que el name no este repetido
