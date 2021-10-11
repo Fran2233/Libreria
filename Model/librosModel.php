@@ -23,14 +23,14 @@ class libreriaModel{
 function getLibro($id){
     $obtener = $this->db->prepare("SELECT * FROM libros WHERE id_libro=?");
     $obtener->execute(array($id));
-    $libro = $obtener->fetch(PDO::FETCH_OBJ);
+    $libro = $obtener->fetch(PDO::FETCH_OBJ);  
     return $libro;
 }
 
 
 //Libros por autor
 function getLibrosPorAutor($autor){
-    $obtener = $this->db->prepare("SELECT a.*, b.* FROM libros a INNER JOIN autores b ON a.autor = b.nameAutores
+    $obtener = $this->db->prepare("SELECT a.* FROM libros a INNER JOIN autores b ON a.autor = b.nameAutores
     WHERE b.nameAutores =?");
     $obtener->execute(array($autor));
     $libroAutor = $obtener->fetchAll(PDO::FETCH_OBJ);
