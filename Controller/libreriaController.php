@@ -33,14 +33,12 @@ class libreriaController{
 
 //Descripción de un libro especifico
 public function viewLibro($id){
-    // $this->authHelper->checkloggedIn();
     $libro = $this->modelLibros->getLibro($id);
     $this->view->mostrarLibroID($libro);
 }
 
 // Lista de libros por Autor
 public function viewLibroAutor($autor){
-    // $this->authHelper->checkloggedIn();
     $nombreAutor = $autor;
     $libroPorAutor = $this->modelLibros->getLibrosPorAutor($autor);
     $this->view->libroPorAutor($libroPorAutor,$nombreAutor);
