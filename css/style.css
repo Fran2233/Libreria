@@ -147,7 +147,7 @@ button a{
     font-weight: bold;
 }
 
-#titulo,#autor,#anio_publicado,#genero,#nameAutores,#email-signin,#signin_password,#email-login,#login_password, .btn-primary{
+#titulo,#nacionalidad,#autor,#anio_publicado,#genero,#nameAutores,#email-signin,#signin_password,#email-login,#login_password, .btn-primary{
     border-radius: 2rem;
 }
 
