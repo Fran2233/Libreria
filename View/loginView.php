@@ -2,7 +2,8 @@
 
 require_once './libs/smarty-3.1.39/libs/Smarty.class.php';
 
-class loginView{
+class loginView
+{
 
     private $smarty;
 
@@ -12,18 +13,19 @@ class loginView{
     }
 
     // Muestra el login
-    public function showLogin($default = ""){
-        $this->smarty->assign('default',$default);
+    public function showLogin($default = "")
+    {
+        $this->smarty->assign('default', $default);
         $this->smarty->display('templates/login.tpl');
     }
 
-    public function showHome(){
-        header("Location: ".BASE_URL."home");
+    public function showHome()
+    {
+        header("Location: " . BASE_URL . "home");
     }
 
-    public function showLoginLocation(){
-        header("Location: ".BASE_URL."login");
+    public function showLoginLocation()
+    {
+        header("Location: " . BASE_URL . "login");
     }
 }
-
-
