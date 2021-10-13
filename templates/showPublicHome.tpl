@@ -2,7 +2,7 @@
 <h1>Biblioteca(vista pública)</h1>
 <a href="login" class="backInicio">Iniciar sesión</a>
 
-    <h2>Lista de libros disponibles</h2>
+    <h2 class="h2Public">Lista de libros disponibles</h2>
 <ul>
     {foreach from=$list item=$lista}
         <li>
@@ -13,7 +13,7 @@
         </li>
     {/foreach}
 </ul>
-<h2>Lista de autores</h2>
+<h2 class="h2Public">Lista de autores</h2>
 <ul>
     {foreach from=$autores item=$autor}
         <li>
