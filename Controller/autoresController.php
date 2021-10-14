@@ -85,11 +85,11 @@ class autoresController
 
 
     // Chequear que el autor a borrar no tenga libros asociados
-    public function checkLibroAutor($autor)
+    public function checkLibroAutor($id_autor)
     {
         $listLibros = $this->modelLibros->listaCompleta();
         foreach ($listLibros as $lista) {
-            if ($lista->fk_id_autor === $autor) {
+            if ($lista->fk_id_autor === $id_autor) {
                 return true;
             }
         }

@@ -94,7 +94,7 @@ class libreriaController
     {
         $lista = $this->modelLibros->listaCompleta();
         foreach ($lista as $list) {
-            if (($list->titulo === $titulo) && ($list->autor === $autor)) {
+            if (($list->titulo === $titulo) && ($list->fk_id_autor === $autor)) {
                 return true;
             }
         }
