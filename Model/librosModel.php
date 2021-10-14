@@ -34,7 +34,7 @@ class libreriaModel
     //Libros por autor
     function getLibrosPorAutor($autor)
     {
-        $obtener = $this->db->prepare("SELECT a.* FROM libros a INNER JOIN autores b ON a.autor = b.nameAutores
+        $obtener = $this->db->prepare("SELECT a.*,b.* FROM libros a INNER JOIN autores b ON a.fk_id_autor = b.id_autor
     WHERE b.nameAutores =?");
         $obtener->execute(array($autor));
         $libroAutor = $obtener->fetchAll(PDO::FETCH_OBJ);
@@ -42,10 +42,10 @@ class libreriaModel
     }
 
     //Crear Libro
-    function crearLibro($titulo, $autor, $anio_publicado, $genero)
+    function crearLibro($titulo, $anio_publicado, $genero,$fk_id_autor)
     {
-        $obtener = $this->db->prepare("INSERT INTO libros(titulo,autor,anio_publicado,genero) VALUES(?, ?, ?, ?)");
-        $obtener->execute(array($titulo, $autor, $anio_publicado, $genero));
+        $obtener = $this->db->prepare("INSERT INTO libros(titulo,anio_publicado,genero,fk_id_autor) VALUES(?,?,?,?)");
+        $obtener->execute(array($titulo, $anio_publicado, $genero,$fk_id_autor));
     }
 
 
@@ -59,12 +59,12 @@ class libreriaModel
 
 
     //Editar Libro
-    function editarLibro($id, $titulo, $autor, $anio_publicado, $genero)
+    function editarLibro($id, $titulo, $anio_publicado, $genero,$fk_id_autor)
     {
-        $obtener = $this->db->prepare("UPDATE libros SET titulo='$titulo',autor='$autor',anio_publicado='$anio_publicado',genero='$genero' WHERE id_libro=?");
+        $obtener = $this->db->prepare("UPDATE libros SET titulo='$titulo',anio_publicado='$anio_publicado',genero='$genero',fk_id_autor='$fk_id_autor' WHERE id_libro=?");
         $obtener->execute(array($id));
         $obtener->execute(array($titulo));
-        $obtener->execute(array($autor));
+        $obtener->execute(array($fk_id_autor));
         $obtener->execute(array($anio_publicado));
         $obtener->execute(array($genero));
     }

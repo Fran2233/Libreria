@@ -16,7 +16,7 @@
             </a>
         {* Agrega boton delete *}
         <button class="btn btn-danger btn-sm">
-                <a href="deleteAutor/{$autor->nameAutores}">Borrar</a>
+                <a href="deleteAutor/{$autor->id_autor}">Borrar</a>
         </button>
         {* Editar Autor *}
         <form  action="editAutor" method="post"  class="mb-3 inputAutores">

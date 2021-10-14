@@ -52,11 +52,11 @@ class libreriaController
     public function createLibro()
     {
         $this->authHelper->checkloggedIn();
-        $existe = $this->checkLibro($_POST['titulo'], $_POST['autor']);
+        $existe = $this->checkLibro($_POST['titulo'], $_POST['fk_id_autor']);
         if ($existe) {
             $this->view->showError("El libro ya existe!");
         } else {
-            $this->modelLibros->crearLibro($_POST['titulo'], $_POST['autor'], $_POST['anio_publicado'], $_POST['genero']);
+            $this->modelLibros->crearLibro($_POST['titulo'], $_POST['anio_publicado'], $_POST['genero'],$_POST['fk_id_autor']);
             $this->view->mostrarHome();
         }
     }
@@ -75,7 +75,7 @@ class libreriaController
     public function editLibro()
     {
         $this->authHelper->checkloggedIn();
-        $this->modelLibros->editarLibro($_POST['id_libro'], $_POST['titulo'], $_POST['autor'], $_POST['anio_publicado'], $_POST['genero']);
+        $this->modelLibros->editarLibro($_POST['id_libro'], $_POST['titulo'], $_POST['anio_publicado'], $_POST['genero'],$_POST['fk_id_autor']);
         $this->view->mostrarHome();
     }
 

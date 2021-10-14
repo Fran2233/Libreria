@@ -89,7 +89,7 @@ class autoresController
     {
         $listLibros = $this->modelLibros->listaCompleta();
         foreach ($listLibros as $lista) {
-            if ($lista->autor === $autor) {
+            if ($lista->fk_id_autor === $autor) {
                 return true;
             }
         }

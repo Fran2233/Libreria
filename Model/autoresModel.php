@@ -32,7 +32,7 @@ class autoresModel
     //Borrar autor
     public function borrarAutor($autor)
     {
-        $obtener = $this->db->prepare("DELETE FROM autores WHERE nameAutores=?");
+        $obtener = $this->db->prepare("DELETE FROM autores WHERE id_autor=?");
         $obtener->execute(array($autor));
     }
 

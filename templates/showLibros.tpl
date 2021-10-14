@@ -25,9 +25,9 @@
             <form action="editLibro" method="post">
                 <input type="number"  name="id_libro" id="id_libro"  value="{$lista->id_libro}" class="hidden">
                 <input type="text" placeholder="Título" name="titulo" id="titulo"  required > 
-                <select type="text" name="autor" id="autor" >
+                <select type="text" name="fk_id_autor" id="fk_id_autor" >
                 {foreach from=$autores item=$autor }
-                    <option value="{$autor->nameAutores}">{$autor->nameAutores}</option>
+                    <option value="{$autor->id_autor}">{$autor->id_autor}</option>
                 {/foreach}
                 </select>
                 <input type="number" placeholder="Año publicado" name="anio_publicado" id="anio_publicado" required> 
