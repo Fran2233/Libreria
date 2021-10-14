@@ -27,7 +27,7 @@
                 <input type="text" placeholder="Título" name="titulo" id="titulo"  required > 
                 <select type="text" name="fk_id_autor" id="fk_id_autor" >
                 {foreach from=$autores item=$autor }
-                    <option value="{$autor->id_autor}">{$autor->id_autor}</option>
+                    <option value="{$autor->id_autor}">{$autor->nameAutores}</option>
                 {/foreach}
                 </select>
                 <input type="number" placeholder="Año publicado" name="anio_publicado" id="anio_publicado" required> 
