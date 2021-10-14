@@ -24,7 +24,9 @@ class libreriaModel
     //Obtener libro especifico mediante ID
     function getLibro($id)
     {
-        $obtener = $this->db->prepare("SELECT * FROM libros WHERE id_libro=?");
+        $obtener = $this->db->prepare("SELECT a.*,b.* FROM libros a INNER JOIN autores b ON a.fk_id_autor = b.id_autor
+        WHERE a.id_libro =?");
+        // $obtener = $this->db->prepare("SELECT * FROM libros WHERE id_libro=?");
         $obtener->execute(array($id));
         $libro = $obtener->fetch(PDO::FETCH_OBJ);
         return $libro;
