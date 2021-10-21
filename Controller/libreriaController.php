@@ -21,6 +21,14 @@ class libreriaController
         $this->loginView = new loginView();
     }
 
+    // Muestra la home
+    public function showHome()
+    {
+        $this->authHelper->checkloggedIn();
+        $list = $this->modelLibros->listaCompleta();
+        $autores = $this->autoresModel->listaAutores();
+        $this->view->showHomeView($list, $autores);
+    }
 
     //Descripción de un libro especifico
     public function viewLibro($id)
@@ -91,10 +99,5 @@ class libreriaController
     }
 
 
-    public function showHome()
-    {
-        $list = $this->modelLibros->listaCompleta();
-        $autores = $this->autoresModel->listaAutores();
-        $this->view->showHomeView($list, $autores);
-    }
+    
 }
