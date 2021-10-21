@@ -20,14 +20,7 @@ class autoresController
         $this->authHelper = new AuthHelper();
     }
 
-    public function showAutores()
-    {
-        $autores = $this->modelAutores->listaAutores();
-        $this->view->mostrarAutores($autores);
-        $this->view->addAutor();
-    }
-
-
+ 
     //Agregar Autor
     public function agregarAutor()
     {

@@ -31,8 +31,7 @@ switch ($params[0]) {
         $userController->verifyLogin();
         break;
     case 'home': 
-        $libreriaController->showLibros(); 
-        $autoresController->showAutores();
+        $libreriaController->showHome();
         break;
     case 'viewLibro':
         $libreriaController->viewLibro($params[1]);
@@ -64,6 +63,7 @@ switch ($params[0]) {
     case 'showHomePublic':
             $libreriaController->showHomePublic();
          break;
+    
 
         default:
 

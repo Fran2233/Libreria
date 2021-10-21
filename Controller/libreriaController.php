@@ -22,16 +22,6 @@ class libreriaController
     }
 
 
-    public function showLibros()
-    {
-        $this->authHelper->checkloggedIn();
-        $list = $this->modelLibros->listaCompleta();
-        $autores = $this->autoresModel->listaAutores();
-        $this->view->showLibros($list, $autores);
-        $this->view->addLibro($autores);
-    }
-
-
     //Descripción de un libro especifico
     public function viewLibro($id)
     {
@@ -56,7 +46,7 @@ class libreriaController
         if ($existe) {
             $this->view->showError("El libro ya existe!");
         } else {
-            $this->modelLibros->crearLibro($_POST['titulo'], $_POST['anio_publicado'], $_POST['genero'],$_POST['fk_id_autor']);
+            $this->modelLibros->crearLibro($_POST['titulo'], $_POST['anio_publicado'], $_POST['genero'], $_POST['fk_id_autor']);
             $this->view->mostrarHome();
         }
     }
@@ -75,7 +65,7 @@ class libreriaController
     public function editLibro()
     {
         $this->authHelper->checkloggedIn();
-        $this->modelLibros->editarLibro($_POST['id_libro'], $_POST['titulo'], $_POST['anio_publicado'], $_POST['genero'],$_POST['fk_id_autor']);
+        $this->modelLibros->editarLibro($_POST['id_libro'], $_POST['titulo'], $_POST['anio_publicado'], $_POST['genero'], $_POST['fk_id_autor']);
         $this->view->mostrarHome();
     }
 
@@ -98,5 +88,13 @@ class libreriaController
                 return true;
             }
         }
+    }
+
+
+    public function showHome()
+    {
+        $list = $this->modelLibros->listaCompleta();
+        $autores = $this->autoresModel->listaAutores();
+        $this->view->showHomeView($list, $autores);
     }
 }

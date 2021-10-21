@@ -74,4 +74,12 @@ class libreriaView
     {
         header("Location: " . BASE_URL . "home");
     }
+
+
+    public function showHomeView($list,$autores,$error = ''){
+        $this->smarty->assign('list',$list);
+        $this->smarty->assign('error',$error);
+        $this->smarty->assign('autores',$autores);
+        $this->smarty->display('templates/showHome.tpl');
+    }
 }
