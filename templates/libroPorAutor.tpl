@@ -10,10 +10,9 @@
                     {/foreach}
                 
             </ul>
-            {if {$Smarty.session.email}}
-                <img src="./images/back.png" alt="" id="back">
-            {/if}
-            
+            <a href="javascript:history.back()" class="back"><img src="./images/back.png" alt="" id="back"></a>
             <a href="" class="backInicio">Volver al inicio</a>
+            <a href="javascript:history.forward()" class="back"><img src="./images/forward.png" alt="" id="back"></a>
+
 
 {include file='templates/footer.tpl'}

@@ -5,7 +5,7 @@ class ApiView{
     public function response($data, $status) {
         header("Content-Type: application/json");
         header("HTTP/1.1 " . $status . " " . $this->_requestStatus($status));
-        echo json_encode($data);
+        echo 'Lista de Libros'. json_encode($data);
     }
     
     private function _requestStatus($code){

@@ -1,8 +1,9 @@
 <?php
 require_once "./Model/librosModel.php";
 require_once "./Model/autoresModel.php";
-require_once "./View/libreriaView.php";
+require_once "./View/homeView.php";
 require_once "./Helpers/AuthHelper.php";
+require_once "./View/libreriaView.php";
 
 
 
@@ -11,12 +12,14 @@ class libreriaController
     private $autoresModel;
     private $modelLibros;
     private $view;
+    private $viewLibreria;
     private $authHelper;
     public function __construct()
     {
         $this->autoresModel = new autoresModel();
         $this->modelLibros = new libreriaModel();
-        $this->view = new libreriaView();
+        $this->view = new homeView();
+        $this->viewLibreria = new libreriaView();
         $this->authHelper = new AuthHelper();
         $this->loginView = new loginView();
     }
@@ -27,14 +30,14 @@ class libreriaController
         $this->authHelper->checkloggedIn();
         $list = $this->modelLibros->listaCompleta();
         $autores = $this->autoresModel->listaAutores();
-        $this->view->showHomeView($list, $autores);
+        $this->view->showHome($list, $autores);
     }
 
     //Descripción de un libro especifico
     public function viewLibro($id)
     {
         $libro = $this->modelLibros->getLibro($id);
-        $this->view->mostrarLibroID($libro);
+        $this->viewLibreria->mostrarLibroID($libro);
     }
 
     // Lista de libros por Autor
@@ -42,7 +45,7 @@ class libreriaController
     {
         $nombreAutor = $autor;
         $libroPorAutor = $this->modelLibros->getLibrosPorAutor($autor);
-        $this->view->libroPorAutor($libroPorAutor, $nombreAutor);
+        $this->viewLibreria->libroPorAutor($libroPorAutor, $nombreAutor);
     }
 
 

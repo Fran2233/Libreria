@@ -5,7 +5,8 @@
 <h3>Año de publicación:{$libro->anio_publicado}</h3>
 <h3>Género:{$libro->genero}</h3>
 
-<a href="viewLibroAutor/{$libro->nameAutores}" class="back"><img src="./images/back.png" alt="" id="back"></a>
+
+<a href="javascript:history.back()" class="back"><img src="./images/back.png" alt="" id="back"></a>
 <a href="" class="backInicio">Volver al inicio</a>
 
 {include file='templates/footer.tpl'}

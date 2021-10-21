@@ -1,6 +1,6 @@
 <?php
 require_once "./Model/autoresModel.php";
-require_once "./View/libreriaView.php";
+require_once "./View/homeView.php";
 require_once "./Helpers/AuthHelper.php";
 require_once "./Model/librosModel.php";
 
@@ -16,7 +16,7 @@ class autoresController
     {
         $this->modelLibros = new libreriaModel();
         $this->modelAutores = new autoresModel();
-        $this->view = new libreriaView();
+        $this->view = new homeView();
         $this->authHelper = new AuthHelper();
     }
 
