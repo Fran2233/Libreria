@@ -2,17 +2,19 @@
 require_once "./Model/usuariosModel.php";
 require_once "./View/loginView.php";
 require_once "./View/libreriaView.php";
-
+require_once "./View/homeView.php";
 class usuariosController
 {
     private $viewLibreria;
     private $view;
     private $model;
+    private $viewHome;
     public function __construct()
     {
         $this->viewLibreria = new libreriaView();
         $this->model = new usuariosModel();
         $this->view = new loginView();
+        $this->viewHome = new homeView();
     }
 
 
@@ -61,7 +63,7 @@ class usuariosController
         $password = password_hash($_POST['user_password'], PASSWORD_BCRYPT);
         $existe = $this->checkUser($_POST['email']);
         if ($existe) {
-            $this->viewLibreria->showError("Ese nombre ya esta en uso!");
+            $this->viewHome->showError("Ese nombre ya esta en uso!");
         } else {
             $this->model->registration($_POST['email'], $password);
             $this->view->showLogin("¡Registrado con exito!");
