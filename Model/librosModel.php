@@ -43,10 +43,10 @@ class libreriaModel
     }
 
     //Crear Libro
-    function crearLibro($titulo, $anio_publicado, $genero,$fk_id_autor)
+    function crearLibro($titulo, $anio_publicado, $genero, $fk_id_autor)
     {
         $obtener = $this->db->prepare("INSERT INTO libros(titulo,anio_publicado,genero,fk_id_autor) VALUES(?,?,?,?)");
-        $obtener->execute(array($titulo, $anio_publicado, $genero,$fk_id_autor));
+        $obtener->execute(array($titulo, $anio_publicado, $genero, $fk_id_autor));
     }
 
 
@@ -60,13 +60,9 @@ class libreriaModel
 
 
     //Editar Libro
-    function editarLibro($id, $titulo, $anio_publicado, $genero,$fk_id_autor)
+    function editarLibro($id, $titulo, $anio_publicado, $genero, $fk_id_autor)
     {
-        $obtener = $this->db->prepare("UPDATE libros SET titulo='$titulo',anio_publicado='$anio_publicado',genero='$genero',fk_id_autor='$fk_id_autor' WHERE id_libro=?");
-        $obtener->execute(array($id));
-        $obtener->execute(array($titulo));
-        $obtener->execute(array($fk_id_autor));
-        $obtener->execute(array($anio_publicado));
-        $obtener->execute(array($genero));
+        $obtener = $this->db->prepare("UPDATE libros SET titulo=?,anio_publicado=?,genero=?,fk_id_autor=? WHERE id_libro=?");
+        $obtener->execute(array($titulo, $anio_publicado, $genero, $fk_id_autor, $id));
     }
 }
