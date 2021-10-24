@@ -1,14 +1,14 @@
 <?php
 require_once "./Model/usuariosModel.php";
 require_once "./View/loginView.php";
-require_once "./View/libreriaView.php";
 require_once "./View/homeView.php";
+require_once "./Helpers/AuthHelper.php";
 class usuariosController
 {
-    private $viewLibreria;
     private $view;
     private $model;
     private $viewHome;
+    private $authHelper;
     public function __construct()
     {
         $this->viewLibreria = new libreriaView();
@@ -66,7 +66,7 @@ class usuariosController
             $this->viewHome->showError("Ese nombre ya esta en uso!");
         } else {
             $this->model->registration($_POST['email'], $password);
-            $this->view->showLogin("¡Registrado con exito!");
+            $this->verifyLogin();
         }
     }
 
