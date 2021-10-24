@@ -71,7 +71,7 @@ class ApiLibreriaController
             $this->modelLibros->editarLibro($idLibro, $body->titulo, $body->anio_publicado, $body->genero, $body->fk_id_autor);
             return $this->view->response("El libro se edito con exito!", 200);
         } else {
-            return $this->view->response("El libro con el ID=$idLibro no existe", 404);
+            return $this->view->response("Error al editar libro", 404);
         }
     }
 
