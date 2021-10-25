@@ -128,6 +128,11 @@
                             </form>
                             {else}
                             {$users->email}
+                            <button class="btn btn-danger btn-sm">
+                                <a href="deleteUser/{$users->id_usuario}">
+                                    Borrar
+                                </a>
+                            </button>
                                 <form  action="addAdmin" method="post"  class="mb-3 inputAutores">
                                 <input type="text" value="{$users->id_usuario}" name="id_usuario" id="id_usuario"  class="hidden" >
                                 <input type="text" value="userAdmin" name="administrador" id="administrador"  class="hidden" >
