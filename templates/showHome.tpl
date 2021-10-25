@@ -103,19 +103,27 @@
      </form>
 
      <h2 class="users">{$error}</h2>
+
+        {* Si sos admin muestro la lista de users *}
             {if $smarty.session.administrador == 'userAdmin'}
             <h1>Lista de usuarios</h1>
                 <ul>
                     {foreach from=$usuarios item=$users}
-                        {if $users->email == 'admin@gmail.com'}
-                        <h5>Admins</h5>
-                        <li>
-                            {$users->email}
-                        </li>   
-                        ************ 
-                        {else}
                          <li>
-                            {$users->email}
+                         {if $smarty.session.email == {$users->email}}
+                             {$users->email}(Iniciado con esta cuenta)
+                            <form  action="addAdmin" method="post"  class="mb-3 inputAutores">
+                                <input type="text" value="{$users->id_usuario}" name="id_usuario" id="id_usuario"  class="hidden" >
+                                <input type="text" value="userAdmin" name="administrador" id="administrador"  class="hidden" >
+                                <input type="submit"  value="Dar Admin" class="btn btn-success btn-sm">
+                            </form>
+                            <form  action="removeAdmin" method="post"  class="mb-3 inputAutores">
+                                <input type="text" value="{$users->id_usuario}" name="id_usuario" id="id_usuario"  class="hidden" >
+                                <input type="text" value="no-admin" name="administrador" id="administrador"  class="hidden" >
+                                <input type="submit"  value="Quitar Admin" class="btn btn-success btn-sm">
+                            </form>
+                             {else}
+                                 {$users->email}
                             <button class="btn btn-danger btn-sm">
                                 <a href="deleteUser/{$users->id_usuario}">
                                     Borrar
@@ -131,11 +139,9 @@
                                 <input type="text" value="no-admin" name="administrador" id="administrador"  class="hidden" >
                                 <input type="submit"  value="Quitar Admin" class="btn btn-success btn-sm">
                             </form>
+                         {/if}
+                            
                         </li>
-                        {/if} 
-                        
-                        {* Para dar admin usar funcion que llame a userController y que esta llame a una funcion del model (UPDATE) *}
-                        {* Luego llamar funcion que traiga solo los ADMINS  *}
                             
                        
                        
