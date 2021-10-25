@@ -113,6 +113,7 @@
                          {* Con el if miro en que cuenta estoy iniciado y deshabilito los botones de borrar,agregar y quitar admin *}
                          {if $smarty.session.email == {$users->email}}
                              {$users->email}  (Iniciado con esta cuenta)
+                             {* Si ya es admin agrego boton de quitar admin *}
                              {else if $users->administrador == 'userAdmin'}
                                  {$users->email}
                             <button class="btn btn-danger btn-sm">
@@ -127,6 +128,7 @@
                                 <input type="submit"  value="Quitar Admin" class="btn btn-success btn-sm">
                             </form>
                             {else}
+                            {* Sino es admin agrego el boton para agregarlo *}
                             {$users->email}
                             <button class="btn btn-danger btn-sm">
                                 <a href="deleteUser/{$users->id_usuario}">
