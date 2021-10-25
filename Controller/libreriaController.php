@@ -4,6 +4,7 @@ require_once "./Model/autoresModel.php";
 require_once "./View/homeView.php";
 require_once "./Helpers/AuthHelper.php";
 require_once "./View/libreriaView.php";
+require_once "./Model/usuariosModel.php";
 
 
 
@@ -14,8 +15,10 @@ class libreriaController
     private $view;
     private $viewLibreria;
     private $authHelper;
+    private $usuariosModel;
     public function __construct()
     {
+        $this->usuariosModel = new usuariosModel();
         $this->autoresModel = new autoresModel();
         $this->modelLibros = new libreriaModel();
         $this->view = new homeView();
@@ -30,7 +33,8 @@ class libreriaController
         $this->authHelper->checkloggedIn();
         $list = $this->modelLibros->listaCompleta();
         $autores = $this->autoresModel->listaAutores();
-        $this->view->showHome($list, $autores);
+        $usuarios = $this->usuariosModel->listaCompleta();
+        $this->view->showHome($list, $autores, null, $usuarios);
     }
 
     //Descripción de un libro especifico
@@ -100,7 +104,4 @@ class libreriaController
             }
         }
     }
-
-
-    
 }

@@ -1,6 +1,7 @@
 <?php
 require_once './libs/smarty-3.1.39/libs/Smarty.class.php';
-class homeView{
+class homeView
+{
 
     private $smarty;
     public function __construct()
@@ -8,7 +9,7 @@ class homeView{
         $this->smarty = new Smarty();
     }
 
-        
+
     // Muestro la vista sin loguearse
     public function homePublic($list, $autores)
     {
@@ -30,11 +31,12 @@ class homeView{
     }
 
 
-    public function showHome($list,$autores,$error = ''){
-        $this->smarty->assign('list',$list);
-        $this->smarty->assign('error',$error);
-        $this->smarty->assign('autores',$autores);
+    public function showHome($list, $autores, $error = '', $usuarios)
+    {
+        $this->smarty->assign('list', $list);
+        $this->smarty->assign('error', $error);
+        $this->smarty->assign('autores', $autores);
+        $this->smarty->assign('usuarios', $usuarios);
         $this->smarty->display('templates/showHome.tpl');
     }
-
 }

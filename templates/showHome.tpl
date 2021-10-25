@@ -6,12 +6,13 @@
     <h2>Lista de libros: </h2>
     <h1>{$error}</h1>
     <a href="logout" class="btn btn-outline-secondary bt-sm">Logout</a>
-   
+    Sesion iniciada como = {$smarty.session.email}
     <ul id="listaLibros">
 
 
         {* RECORRO LISTA DE LIBROS *}
         {foreach from=$list item=$lista}
+
             <a href="viewLibro/{$lista->id_libro}" class="fw-bolder">
                 {* Muestra nombre libros *}
                 <li>{$lista->titulo}</li>
@@ -92,6 +93,17 @@
      </form>
 
      <h2>{$error}</h2>
+            {if $smarty.session.email == 'admin@gmail.com'}
+            <h1>Lista de usuarios</h1>
+                <ul>
+                    {foreach from=$usuarios item=$users}
+                        <li>{$users->email}</li>
+                        <button class="btn btn-danger btn-sm">
+                            <a href="deleteAutor/{$autor->id_autor}">Borrar</a>
+                        </button>
+                    {/foreach}
+                </ul>
+            {/if}
 </div>
 
 {include file='templates/footer.tpl'}
