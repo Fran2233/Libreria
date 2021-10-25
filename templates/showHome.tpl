@@ -15,12 +15,17 @@
 
             <a href="viewLibro/{$lista->id_libro}" class="fw-bolder">
                 {* Muestra nombre libros *}
-                <li>{$lista->titulo}</li>
+                <li>
+                {$lista->titulo}
+                <button class="btn btn-danger btn-sm">
+                    <a href="deleteLibro/{$lista->id_libro}">
+                        Borrar
+                    </a>
+                </button>
+                </li>
             </a>
             {* Agrega boton delete *}
-            <button class="btn btn-danger btn-sm">
-                <a href="deleteLibro/{$lista->id_libro}">Borrar</a>
-            </button>
+            
            
         {* Editar libro *}
         
@@ -69,12 +74,17 @@
         {* Muestro Autores *}
         {foreach from=$autores item=$autor}
             <a href="viewLibroAutor/{$autor->nameAutores}" class="fw-bolder">
-                <li>{$autor->nameAutores}---{$autor->nacionalidad}</li>
+                <li>
+                    {$autor->nameAutores}---{$autor->nacionalidad}
+                    <button class="btn btn-danger btn-sm">
+                        <a href="deleteAutor/{$autor->id_autor}">
+                            Borrar
+                        </a>
+                    </button>
+                </li>
             </a>
         {* Agrega boton delete *}
-        <button class="btn btn-danger btn-sm">
-                <a href="deleteAutor/{$autor->id_autor}">Borrar</a>
-        </button>
+        
         {* Editar Autor *}
         <form  action="editAutor" method="post"  class="mb-3 inputAutores">
             <input type="text" value="{$autor->id_autor}" name="id_autor" id="id_autor"  class="hidden" >
@@ -97,10 +107,38 @@
             <h1>Lista de usuarios</h1>
                 <ul>
                     {foreach from=$usuarios item=$users}
-                        <li>{$users->email}</li>
-                        <button class="btn btn-danger btn-sm">
-                            <a href="deleteUser/{$users->id_usuario}">Borrar</a>
-                        </button>
+                        {if $users->email == 'admin@gmail.com'}
+                        <h5>Admins</h5>
+                        <li>
+                            {$users->email}
+                        </li>   
+                        ************ 
+                        {else}
+                         <li>
+                            {$users->email}
+                            <button class="btn btn-danger btn-sm">
+                                <a href="deleteUser/{$users->id_usuario}">
+                                    Borrar
+                                </a>
+                            </button>
+                            <form  action="addAdmin" method="post"  class="mb-3 inputAutores">
+                                <input type="text" value="{$users->id_usuario}" name="id_usuario" id="id_usuario"  class="hidden" >
+                                <input type="text" value="userAdmin" name="administrador" id="administrador"  class="hidden" >
+                                <input type="submit"  value="Dar Admin" class="btn btn-success btn-sm">
+                            </form>
+                            <form  action="removeAdmin" method="post"  class="mb-3 inputAutores">
+                                <input type="text" value="{$users->id_usuario}" name="id_usuario" id="id_usuario"  class="hidden" >
+                                <input type="text" value="no-admin" name="administrador" id="administrador"  class="hidden" >
+                                <input type="submit"  value="Quitar Admin" class="btn btn-success btn-sm">
+                            </form>
+                        </li>
+                        {/if} 
+                        
+                        {* Para dar admin usar funcion que llame a userController y que esta llame a una funcion del model (UPDATE) *}
+                        {* Luego llamar funcion que traiga solo los ADMINS  *}
+                            
+                       
+                       
                     {/foreach}
                 </ul>
             {/if}

@@ -45,7 +45,7 @@ class usuariosController
         $user = $this->model->getUser($email);
 
         if ($user && password_verify($password, $user->user_password)) {
-
+            // Agregar un IF para saber si es admin o no -- $user->admin - no-admin $_SESSION["admin"] = 
             session_start();
             $_SESSION["email"] = $email;
 
@@ -84,6 +84,20 @@ class usuariosController
         $this->viewHome->mostrarHome();
     }
 
+
+    // Le doy admin a un user
+    public function addAdmin()
+    {
+        $this->model->Admin($_POST['administrador'], $_POST['id_usuario']);
+        $this->viewHome->mostrarHome();
+    }
+
+    // Quitar Admin
+    public function removeAdmin()
+    {
+        $this->model->Admin($_POST['administrador'], $_POST['id_usuario']);
+        $this->viewHome->mostrarHome();
+    }
 
     // Chequear que el usuario no se encuentre registrado
     public function checkUser($user)

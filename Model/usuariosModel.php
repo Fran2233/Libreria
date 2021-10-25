@@ -46,4 +46,11 @@ class usuariosModel
         $obtener = $this->db->prepare("DELETE FROM usuarios WHERE id_usuario=?");
         $obtener->execute(array($id));
     }
+
+
+    // Agregar o quitar Admin
+    public function Admin($admin, $id){
+        $obtener = $this->db->prepare("UPDATE usuarios SET administrador=? WHERE id_usuario=?");
+        $obtener->execute(array($admin, $id));
+    }
 }

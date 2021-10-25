@@ -66,7 +66,12 @@ switch ($params[0]) {
     case 'deleteUser':
         $userController->deleteUser($params[1]);
         break;
-
+    case 'addAdmin':
+        $userController->addAdmin();
+        break;
+    case 'removeAdmin':
+        $userController->removeAdmin();
+        break;
 
     default:
 

@@ -40,8 +40,7 @@ class autoresModel
     // Editar autor
     public function editarAutor($id_autor, $autor)
     {
-        $obtener = $this->db->prepare("UPDATE autores SET nameAutores='$autor'  WHERE id_autor=?");
-        $obtener->execute(array($id_autor));
-        $obtener->execute(array($autor));
+        $obtener = $this->db->prepare("UPDATE autores SET nameAutores=?  WHERE id_autor=?");
+        $obtener->execute(array($autor, $id_autor));
     }
 }
