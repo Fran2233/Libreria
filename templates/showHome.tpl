@@ -110,19 +110,9 @@
                 <ul>
                     {foreach from=$usuarios item=$users}
                          <li>
-                         {* Con el if miro en que cuenta estoy iniciado y deshabilito el boton de borrar *}
+                         {* Con el if miro en que cuenta estoy iniciado y deshabilito los botones de borrar,agregar y quitar admin *}
                          {if $smarty.session.email == {$users->email}}
                              {$users->email}  (Iniciado con esta cuenta)
-                            <form  action="addAdmin" method="post"  class="mb-3 inputAutores">
-                                <input type="text" value="{$users->id_usuario}" name="id_usuario" id="id_usuario"  class="hidden" >
-                                <input type="text" value="userAdmin" name="administrador" id="administrador"  class="hidden" >
-                                <input type="submit"  value="Dar Admin" class="btn btn-success btn-sm">
-                            </form>
-                            <form  action="removeAdmin" method="post"  class="mb-3 inputAutores">
-                                <input type="text" value="{$users->id_usuario}" name="id_usuario" id="id_usuario"  class="hidden" >
-                                <input type="text" value="no-admin" name="administrador" id="administrador"  class="hidden" >
-                                <input type="submit"  value="Quitar Admin" class="btn btn-success btn-sm">
-                            </form>
                              {else}
                                  {$users->email}
                             <button class="btn btn-danger btn-sm">
