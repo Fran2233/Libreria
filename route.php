@@ -5,7 +5,7 @@ require_once "Controller/autoresController.php";
 require_once "Controller/usuariosController.php";
 
 
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -30,7 +30,7 @@ switch ($params[0]) {
     case 'verify':
         $userController->verifyLogin();
         break;
-    case 'home': 
+    case 'home':
         $libreriaController->showHome();
         break;
     case 'viewLibro':
@@ -43,30 +43,33 @@ switch ($params[0]) {
         $libreriaController->createLibro();
         break;
     case 'deleteLibro':
-            $libreriaController->deleteLibro($params[1]);
+        $libreriaController->deleteLibro($params[1]);
         break;
     case 'editLibro':
-            $libreriaController->editLibro();
+        $libreriaController->editLibro();
         break;
     case 'agregarAutor':
-            $autoresController->agregarAutor();
+        $autoresController->agregarAutor();
         break;
     case 'deleteAutor':
-            $autoresController->deleteAutor($params[1]);
-            break;
+        $autoresController->deleteAutor($params[1]);
+        break;
     case 'editAutor':
-            $autoresController->editAutor();
-            break;
+        $autoresController->editAutor();
+        break;
     case 'registrarUser':
-            $userController->registrarUser();
-         break;
+        $userController->registrarUser();
+        break;
     case 'showHomePublic':
-            $libreriaController->showHomePublic();
-         break;
-    
+        $libreriaController->showHomePublic();
+        break;
+    case 'deleteUser':
+        $userController->deleteUser($params[1]);
+        break;
 
-        default:
 
-        echo('404 Page not found'); 
+    default:
+
+        echo ('404 Page not found');
         break;
 }

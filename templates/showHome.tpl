@@ -6,7 +6,7 @@
     <h2>Lista de libros: </h2>
     <h1>{$error}</h1>
     <a href="logout" class="btn btn-outline-secondary bt-sm">Logout</a>
-    Sesion iniciada como = {$smarty.session.email}
+    
     <ul id="listaLibros">
 
 
@@ -92,14 +92,14 @@
         <input type="submit"  value="Enviar" class="btn btn-success btn-sm">
      </form>
 
-     <h2>{$error}</h2>
+     <h2 class="users">{$error}</h2>
             {if $smarty.session.email == 'admin@gmail.com'}
             <h1>Lista de usuarios</h1>
                 <ul>
                     {foreach from=$usuarios item=$users}
                         <li>{$users->email}</li>
                         <button class="btn btn-danger btn-sm">
-                            <a href="deleteAutor/{$autor->id_autor}">Borrar</a>
+                            <a href="deleteUser/{$users->id_usuario}">Borrar</a>
                         </button>
                     {/foreach}
                 </ul>

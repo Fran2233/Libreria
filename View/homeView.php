@@ -31,7 +31,7 @@ class homeView
     }
 
 
-    public function showHome($list, $autores, $error = '', $usuarios)
+    public function showHome($list, $autores, $error = '', $usuarios='')
     {
         $this->smarty->assign('list', $list);
         $this->smarty->assign('error', $error);

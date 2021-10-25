@@ -1,5 +1,7 @@
 <?php
 require_once "./Model/usuariosModel.php";
+require_once "./Model/librosModel.php";
+require_once "./Model/autoresModel.php";
 require_once "./View/loginView.php";
 require_once "./View/homeView.php";
 require_once "./Helpers/AuthHelper.php";
@@ -8,13 +10,18 @@ class usuariosController
     private $view;
     private $model;
     private $viewHome;
+    private $autoresModel;
+    private $modelLibros;
     private $authHelper;
     public function __construct()
     {
+        $this->autoresModel = new autoresModel();
+        $this->modelLibros = new libreriaModel();
         $this->viewLibreria = new libreriaView();
         $this->model = new usuariosModel();
         $this->view = new loginView();
         $this->viewHome = new homeView();
+        $this->authHelper =  new AuthHelper();
     }
 
 
@@ -68,6 +75,13 @@ class usuariosController
             $this->model->registration($_POST['email'], $password);
             $this->verifyLogin();
         }
+    }
+
+    // borrar user
+    public function deleteUser($id)
+    {
+        $this->model->deleteUser($id);
+        $this->viewHome->mostrarHome();
     }
 
 

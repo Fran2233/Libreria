@@ -38,4 +38,12 @@ class usuariosModel
         $lista = $obtener->fetchAll(PDO::FETCH_OBJ);
         return $lista;
     }
+
+
+    // Borrar usuario
+    public function deleteUser($id)
+    {
+        $obtener = $this->db->prepare("DELETE FROM usuarios WHERE id_usuario=?");
+        $obtener->execute(array($id));
+    }
 }
