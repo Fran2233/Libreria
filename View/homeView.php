@@ -31,12 +31,13 @@ class homeView
     }
 
 
-    public function showHome($list, $autores, $error = '', $usuarios='')
+    public function showHome($list, $autores, $error = '', $usuarios='',$administrador = '')
     {
         $this->smarty->assign('list', $list);
         $this->smarty->assign('error', $error);
         $this->smarty->assign('autores', $autores);
         $this->smarty->assign('usuarios', $usuarios);
+        $this->smarty->assign('administrador', $administrador);
         $this->smarty->display('templates/showHome.tpl');
     }
 }

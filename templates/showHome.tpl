@@ -103,7 +103,7 @@
      </form>
 
      <h2 class="users">{$error}</h2>
-            {if $smarty.session.email == 'admin@gmail.com'}
+            {if $smarty.session.administrador == 'userAdmin'}
             <h1>Lista de usuarios</h1>
                 <ul>
                     {foreach from=$usuarios item=$users}

@@ -19,11 +19,6 @@ class loginView
         $this->smarty->display('templates/login.tpl');
     }
 
-    public function showHome()
-    {
-        header("Location: " . BASE_URL . "home");
-    }
-
     public function showLoginLocation()
     {
         header("Location: " . BASE_URL . "login");
