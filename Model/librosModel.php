@@ -12,7 +12,7 @@ class libreriaModel
 
 
     //Traigo la lista completa de libros
-    function listaCompleta()
+    public function listaCompleta()
     {
         $obtener = $this->db->prepare("SELECT * FROM libros");
         $obtener->execute();
@@ -22,7 +22,7 @@ class libreriaModel
 
 
     //Obtener libro especifico mediante ID
-    function getLibro($id)
+    public function getLibro($id)
     {
         $obtener = $this->db->prepare("SELECT a.*,b.* FROM libros a INNER JOIN autores b ON a.fk_id_autor = b.id_autor
         WHERE a.id_libro =?");
@@ -33,7 +33,7 @@ class libreriaModel
 
 
     //Libros por autor
-    function getLibrosPorAutor($autor)
+    public function getLibrosPorAutor($autor)
     {
         $obtener = $this->db->prepare("SELECT a.*,b.* FROM libros a INNER JOIN autores b ON a.fk_id_autor = b.id_autor
     WHERE b.nameAutores =?");
@@ -43,7 +43,7 @@ class libreriaModel
     }
 
     //Crear Libro
-    function crearLibro($titulo, $anio_publicado, $genero, $fk_id_autor)
+    public function crearLibro($titulo, $anio_publicado, $genero, $fk_id_autor)
     {
         $obtener = $this->db->prepare("INSERT INTO libros(titulo,anio_publicado,genero,fk_id_autor) VALUES(?,?,?,?)");
         $obtener->execute(array($titulo, $anio_publicado, $genero, $fk_id_autor));
@@ -51,7 +51,7 @@ class libreriaModel
 
 
     //Borrar LIBRO
-    function borrarLibro($id)
+    public function borrarLibro($id)
     {
         $obtener = $this->db->prepare("DELETE FROM libros WHERE id_libro=?");
         $obtener->execute(array($id));
@@ -60,9 +60,10 @@ class libreriaModel
 
 
     //Editar Libro
-    function editarLibro($id, $titulo, $anio_publicado, $genero, $fk_id_autor)
+    public function editarLibro($id, $titulo, $anio_publicado, $genero, $fk_id_autor)
     {
         $obtener = $this->db->prepare("UPDATE libros SET titulo=?,anio_publicado=?,genero=?,fk_id_autor=? WHERE id_libro=?");
         $obtener->execute(array($titulo, $anio_publicado, $genero, $fk_id_autor, $id));
     }
+
 }

@@ -72,7 +72,6 @@ switch ($params[0]) {
     case 'removeAdmin':
         $userController->removeAdmin();
         break;
-
     default:
 
         echo ('404 Page not found');

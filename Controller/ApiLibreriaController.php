@@ -1,27 +1,26 @@
 <?php
 
-require_once "./Model/librosModel.php";
-require_once "./Model/autoresModel.php";
+require_once "./Model/valoracionModel.php";
 require_once "./View/ApiView.php";
 
 require_once "./Helpers/AuthHelper.php";
 class ApiLibreriaController
 {
-    private $modelLibros;
+    private $model;
     private $view;
     private $authHelper;
     public function __construct()
     {
-        $this->modelLibros = new libreriaModel();
+        $this->model = new valoracionModel();
         $this->view = new ApiView();
         $this->authHelper = new AuthHelper();
     }
 
 
-    public function obtenerLibros()
+    public function obtenerComentarios()
     {
-        $libros = $this->modelLibros->listaCompleta();
-        return $this->view->response($libros, 200);
+        $comentarios = $this->model->showComentarios();
+        return $this->view->response($comentarios, 200);
     }
 
     public function obtenerLibro($params = null)

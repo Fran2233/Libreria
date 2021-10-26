@@ -21,7 +21,7 @@ class libreriaView
         $this->smarty->display('templates/showLibros.tpl');
     }
 
-//    Muestro libro por ID
+    //    Muestro libro por ID
     public function mostrarLibroID($libro)
     {
         $this->smarty->assign('libro', $libro);
@@ -42,6 +42,5 @@ class libreriaView
         $this->smarty->assign('autores', $autores);
         $this->smarty->display('templates/addLibro.tpl');
     }
-
 
 }

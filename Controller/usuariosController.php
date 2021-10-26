@@ -36,8 +36,7 @@ class usuariosController
 
         $user = $this->model->getUser($email);
 
-        if ($user && password_verify($password, $user->user_password)) {
-            // Agregar un IF para saber si es admin o no -- $user->admin - no-admin $_SESSION["admin"] = 
+        if ($user && password_verify($password, $user->user_password)) { 
             if ($user->administrador === 'userAdmin') {
                 session_start();
                 $_SESSION["email"] = $email;
