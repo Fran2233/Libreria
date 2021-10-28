@@ -7,6 +7,7 @@
 
     {include file='templates/vue/comentarios.tpl'}
 
+
     <a href="javascript:history.back()" class="back"><img src="./images/back.png" alt="" id="back"></a>
     <a href="" class="backInicio">Volver al inicio</a>
 

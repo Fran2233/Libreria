@@ -18,7 +18,7 @@ $router->addRoute('libreriaApi/:ID', 'GET', 'ApiLibreriaController', 'obtenerLib
 $router->addRoute('libreriaApi/:ID', 'DELETE', 'ApiLibreriaController', 'borrarLibro');
 
 // Add libro
-$router->addRoute('libreriaApi', 'POST','ApiLibreriaController', 'addLibro');
+$router->addRoute('libreriaApi', 'POST','ApiLibreriaController', 'addComentario');
 
 // Editar libro
 $router->addRoute('libreriaApi/:ID', 'PUT','ApiLibreriaController', 'editLibro');

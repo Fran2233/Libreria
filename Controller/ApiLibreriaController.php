@@ -46,17 +46,17 @@ class ApiLibreriaController
         }
     }
 
-    public function addLibro($params = null)
+    public function addComentario($params = null)
     {
         // Obtengo el body del request (json)
         $body = $this->getBody();
         // Le mando los parametros con el objeto BODY
-        if ($body->titulo && $body->anio_publicado && $body->genero && $body->fk_id_autor) {
-            $this->modelLibros->crearLibro($body->titulo, $body->anio_publicado, $body->genero, $body->fk_id_autor);
-            $this->view->response("El libro se creo con exito", 200);
-        } else {
-            $this->view->response("El libro no se pudo crear", 400);
-        }
+        // if ($body->titulo && $body->anio_publicado && $body->genero && $body->fk_id_autor) {
+        $this->model->cargarComentario($body->puntaje, $body->comentario, $body->fk_id_libro);
+        // $this->view->response("El libro se creo con exito", 200);
+        // } else {
+        //     $this->view->response("El libro no se pudo crear", 400);
+        // }
     }
 
     // Edito el libro
