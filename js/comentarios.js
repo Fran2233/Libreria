@@ -1,6 +1,6 @@
 "use strict"
 let form = document.querySelector("#formApi");
-let btn = document.querySelector("#btn-carga").addEventListener("click", postComentario);
+form.addEventListener("submit", postComentario);
 const apiUrl = "http://localhost/Web2/TPE2/api/libreriaApi/";
 
 
@@ -44,8 +44,9 @@ async function postComentario() {
             "body": JSON.stringify(valoracion)
         });
         if(res.status === 200){
-            alert("cargado!");
+            alert("cargado");
             getComentarios();
+            console.log(valoracion)
         }
 
         
