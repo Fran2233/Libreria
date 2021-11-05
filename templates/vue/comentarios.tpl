@@ -4,6 +4,8 @@
             <li v-for="comentarios in arrComentarios">
                Comentario : {{comentarios.comentario}} // 
                Puntaje : {{comentarios.puntaje}}
-            </li>
+               <button v-on:click="btnborrar">Borrar</button>
+               ID<input type="number" placeHolder=comentarios.id_valoracion>{{comentarios.id_valoracion}}
+            </li>       
         </ul>
 {/literal}

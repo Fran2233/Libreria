@@ -4,7 +4,7 @@ require_once "./View/homeView.php";
 require_once "./Helpers/AuthHelper.php";
 require_once "./Model/librosModel.php";
 
-
+// Arreglar EN EL ROUTE QUE AL LLAMAAR SHOWHOME TAMBIEN USE METODOS DE AUTORESVIEW NO QUE TODO SE LO MADE LIBRERIA
 
 class autoresController
 {

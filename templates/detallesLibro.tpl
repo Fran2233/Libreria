@@ -10,9 +10,10 @@
         <textarea name="comentario" id="comentario" ></textarea>
         <label for="puntaje">Puntaje :</label>
         <input type="number"  name="puntaje" id="puntaje" class="btn btn-success btn-sm">
-        <input type="number"  value="6" name="fk_id_libro" class="btn btn-success btn-sm hidden">
+        <input type="number"  value="{$libro->id_libro}" name="fk_id_libro" class="btn btn-success btn-sm hidden">
         <input type="submit"  class="btn btn-success btn-sm" id="btn-carga">
     </form>
+
     <div id="app">
         {include file='templates/vue/comentarios.tpl'}
     </div>

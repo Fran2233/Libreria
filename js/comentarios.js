@@ -12,6 +12,13 @@ let app = new Vue({
         titulo: "Lista de  Comentarios",
         arrComentarios: [],
     },
+    methods: {
+        btnborrar: function () {
+            let id_valoracion = 52;
+            borrarComentario(id_valoracion);
+        }
+
+    }
 });
 
 
@@ -21,7 +28,6 @@ async function getComentarios() {
     try {
         let response = await fetch(apiUrl);
         let comentarios = await response.json();
-
         app.arrComentarios = comentarios;
     } catch (e) {
         console.log(e);
@@ -29,30 +35,58 @@ async function getComentarios() {
 }
 // Agrego comentario 
 async function postComentario() {
+
     let formData = new FormData(form);
     let comentario = formData.get('comentario');
     let puntaje = formData.get('puntaje');
+    let fk_id_libro = formData.get('fk_id_libro');
     let valoracion = {
         "puntaje": puntaje,
         "comentario": comentario,
-        "fk_id_libro": 6,
+        "fk_id_libro": fk_id_libro,
     }
     try {
-        let res = await fetch(apiUrl,{
-            "method":"POST",
-            "headers": {"Content-type":"application/json"},
+        let res = await fetch(apiUrl, {
+            "method": "POST",
+            "headers": { "Content-type": "application/json" },
             "body": JSON.stringify(valoracion)
         });
-        if(res.status === 200){
-            alert("cargado");
-            getComentarios();
+        if (res.status === 200) {
             console.log(valoracion)
         }
 
-        
+
     } catch (e) {
         console.log(e);
     }
 }
 
-getComentarios();
+async function comentariosPorLibro() {
+    let formData = new FormData(form);
+    let id_libro = new Number(formData.get('fk_id_libro'));
+    try {
+        let response = await fetch(`${apiUrl}/${id_libro}`);
+        let comentarios = await response.json();
+        app.arrComentarios = comentarios;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+
+async function borrarComentario(id_valoracion) {
+    try {
+        let res = await fetch(`${apiUrl}/${id_valoracion}`, {
+            "method": "DELETE"
+        });
+        if (res.status === 200) {
+            console.log("se borro")
+            comentariosPorLibro();
+        }
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+comentariosPorLibro();

@@ -11,16 +11,16 @@ $router = new Router();
 // Lista de todos los comentarios
 $router->addRoute('libreriaApi', 'GET', 'ApiLibreriaController', 'obtenerComentarios');
 
-// Libro por ID
-$router->addRoute('libreriaApi/:ID', 'GET', 'ApiLibreriaController', 'obtenerLibro');
+// Comentarios por Libro
+$router->addRoute('libreriaApi/:ID', 'GET', 'ApiLibreriaController', 'comentariosPorLibro');
 
-// Borrar Libro
-$router->addRoute('libreriaApi/:ID', 'DELETE', 'ApiLibreriaController', 'borrarLibro');
+// Borrar comentario
+$router->addRoute('libreriaApi/:ID', 'DELETE', 'ApiLibreriaController', 'borrarComentario');
 
-// Add libro
+// Add Comentario
 $router->addRoute('libreriaApi', 'POST','ApiLibreriaController', 'addComentario');
 
-// Editar libro
+// Editar comentario
 $router->addRoute('libreriaApi/:ID', 'PUT','ApiLibreriaController', 'editLibro');
 
 // rutea

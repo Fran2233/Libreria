@@ -23,26 +23,27 @@ class ApiLibreriaController
         return $this->view->response($comentarios, 200);
     }
 
-    public function obtenerLibro($params = null)
+
+    public function comentariosPorLibro($params = null)
     {
         $id_Libro = $params[':ID'];
-        $libro = $this->modelLibros->getLibro($id_Libro);
-        if ($libro) {
-            return $this->view->response($libro, 200);
+        $comentarios = $this->model->comentariosPorLibro($id_Libro);
+        if ($comentarios) {
+            return $this->view->response($comentarios, 200);
         } else {
-            return $this->view->response("La tarea con el ID =  $id_Libro  no existe ", 404);
+            return $this->view->response($comentarios, 404);
         }
     }
 
-    public function borrarLibro($params = null)
+    public function borrarComentario($params = null)
     {
-        $id_Libro = $params[':ID'];
-        $libro = $this->modelLibros->getLibro($id_Libro);
-        if ($libro) {
-            $this->modelLibros->borrarLibro($id_Libro);
-            return $this->view->response("El libro con el ID=$id_Libro fue borrada", 200);
+        $id_comentario = $params[':ID'];
+        $comentario = $this->model->getValoracion($id_comentario);
+        if ($comentario) {
+            $this->model->borrarValoracion($id_comentario);
+            return $this->view->response("fue borrada", 200);
         } else {
-            return $this->view->response("El libro con el ID=$id_Libro no existe", 404);
+            return $this->view->response("no existe", 404);
         }
     }
 
