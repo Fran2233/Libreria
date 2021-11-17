@@ -5,11 +5,13 @@ require_once "./View/homeView.php";
 require_once "./Helpers/AuthHelper.php";
 require_once "./View/libreriaView.php";
 require_once "./Model/usuariosModel.php";
+require_once "./Model/valoracionModel.php";
 
 
 
 class libreriaController
 {
+    private $valoracionModel;
     private $autoresModel;
     private $modelLibros;
     private $view;
@@ -18,6 +20,7 @@ class libreriaController
     private $usuariosModel;
     public function __construct()
     {
+        $this->valoracionModel = new valoracionModel();
         $this->usuariosModel = new usuariosModel();
         $this->autoresModel = new autoresModel();
         $this->modelLibros = new libreriaModel();
@@ -70,8 +73,14 @@ class libreriaController
     public function deleteLibro($id)
     {
         $this->authHelper->checkloggedIn();
-        $this->modelLibros->borrarLibro($id);
-        $this->view->mostrarHome();
+        $comentarios = $this->checkValoracion($id);
+        if ($comentarios){
+            $this->view->showError("Ese libro tiene comentarios y puntajes asignados por eso no puede eliminarse");
+        } else {
+            $this->modelLibros->borrarLibro($id);
+            $this->view->mostrarHome();
+        }
+        
     }
 
 
@@ -100,6 +109,17 @@ class libreriaController
         $lista = $this->modelLibros->listaCompleta();
         foreach ($lista as $list) {
             if (($list->titulo === $titulo) && ($list->fk_id_autor === $autor)) {
+                return true;
+            }
+        }
+    }
+
+    // Chequeo si tiene valoracion 
+    public function checkValoracion($id_libro)
+    {
+        $valoraciones = $this->valoracionModel->showComentarios();
+        foreach ($valoraciones as $comentarios) {
+            if ($comentarios->fk_id_libro === $id_libro) {
                 return true;
             }
         }

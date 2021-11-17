@@ -16,19 +16,21 @@
             <a href="viewLibro/{$lista->id_libro}" class="fw-bolder">
                 {* Muestra nombre libros *}
                 <li>
-                {$lista->titulo}
-                <button class="btn btn-danger btn-sm">
-                    <a href="deleteLibro/{$lista->id_libro}">
-                        Borrar
-                    </a>
-                </button>
+                    {$lista->titulo}
+                    {if $smarty.session.administrador == 'userAdmin'}
+                        <button class="btn btn-danger btn-sm">
+                            <a href="deleteLibro/{$lista->id_libro}">
+                                Borrar
+                            </a>
+                    {/if}    
+                    </button>
                 </li>
             </a>
-            {* Agrega boton delete *}
+            
             
            
         {* Editar libro *}
-        
+        {if $smarty.session.administrador == 'userAdmin'}
             <form action="editLibro" method="post">
                 <input type="number"  name="id_libro" id="id_libro"  value="{$lista->id_libro}" class="hidden">
                 <input type="text" placeholder="Título" name="titulo" id="titulo"  required > 
@@ -41,67 +43,60 @@
                 <input type="text" placeholder="Genero" name="genero" id="genero" required> 
                 <input type="submit"  value="Editar" class= "btn btn-info btn-sm">    
             </form>
-        
+        {/if}
         {/foreach}
         
 
     </ul>
-    <h2 id="addLibro">Agregar libro</h2>
-                <form  action="createLibro" method="post"  class="mb-3">
-                    <input type="text" placeholder="Título" name="titulo" id="titulo"  required > 
-                    <select type="text" name="fk_id_autor" id="fk_id_autor" >
-                    {foreach from=$autores item=$autor}
-                        <option value="{$autor->id_autor}">{$autor->nameAutores}</option>
-                    {/foreach}
-                    </select>
-                    <input type="number" placeholder="Año publicado" name="anio_publicado" id="anio_publicado"> 
-                    <input type="text" placeholder="Género" name="genero" id="genero"> 
-                    <input type="submit"  value="Enviar" class="btn btn-success btn-sm">    
-                </form>
+    {if $smarty.session.administrador == 'userAdmin'}
+        <h2 id="addLibro">Agregar libro</h2>
+                    <form  action="createLibro" method="post"  class="mb-3">
+                        <input type="text" placeholder="Título" name="titulo" id="titulo"  required > 
+                        <select type="text" name="fk_id_autor" id="fk_id_autor" >
+                        {foreach from=$autores item=$autor}
+                            <option value="{$autor->id_autor}">{$autor->nameAutores}</option>
+                        {/foreach}
+                        </select>
+                        <input type="number" placeholder="Año publicado" name="anio_publicado" id="anio_publicado"> 
+                        <input type="text" placeholder="Género" name="genero" id="genero"> 
+                        <input type="submit"  value="Enviar" class="btn btn-success btn-sm">    
+                    </form>
+    {/if}
 
-    {* ERROR *}
-    <h2 class="autores">Autores:</h2>
-    <h1>{$error}</h1>
-        {if $error === 'Este autor tiene libros asignados'}
-            <a href="home" class="backInicio">Volver al inicio</a>
-        {/if}
-
-        
-      
-<ul id="listAutores">
-    
-        
+<ul id="listAutores"> 
         {* Muestro Autores *}
+        <h2>Lista de autores: </h2>
         {foreach from=$autores item=$autor}
             <a href="viewLibroAutor/{$autor->nameAutores}" class="fw-bolder">
                 <li>
                     {$autor->nameAutores}---{$autor->nacionalidad}
-                    <button class="btn btn-danger btn-sm">
-                        <a href="deleteAutor/{$autor->id_autor}">
-                            Borrar
-                        </a>
-                    </button>
+                    {if $smarty.session.administrador == 'userAdmin'}
+                        <button class="btn btn-danger btn-sm">
+                            <a href="deleteAutor/{$autor->id_autor}">
+                                Borrar
+                            </a>
+                        </button>
+                    {/if}
                 </li>
-            </a>
-        {* Agrega boton delete *}
-        
+            </a>    
         {* Editar Autor *}
-        <form  action="editAutor" method="post"  class="mb-3 inputAutores">
-            <input type="text" value="{$autor->id_autor}" name="id_autor" id="id_autor"  class="hidden" >
-            <input type="text" placeholder="Nombre" name="nameAutores" id="nameAutores"  required >
-            <input type="submit"  value="Editar" class="btn btn-info btn-sm">
-        </form>
-    
+            {if $smarty.session.administrador == 'userAdmin'}
+                <form  action="editAutor" method="post"  class="mb-3 inputAutores">
+                    <input type="text" value="{$autor->id_autor}" name="id_autor" id="id_autor"  class="hidden" >
+                    <input type="text" placeholder="Nombre" name="nameAutores" id="nameAutores"  required >
+                    <input type="submit"  value="Editar" class="btn btn-info btn-sm">
+                </form>
+            {/if}
         {/foreach}
-
 </ul>
-<h2 class="autores">Agregar autor</h2>
-    <form  action="agregarAutor" method="post"  class="mb-3">
-        <input type="text" placeholder="Nombre" name="nameAutores" id="nameAutores"  required >
-        <input type="text" placeholder="Nacionalidad" name="nacionalidad" id="nacionalidad"  required >
-        <input type="submit"  value="Enviar" class="btn btn-success btn-sm">
-     </form>
-
+{if $smarty.session.administrador == 'userAdmin'}
+    <h2 class="autores">Agregar autor</h2>
+        <form  action="agregarAutor" method="post"  class="mb-3">
+            <input type="text" placeholder="Nombre" name="nameAutores" id="nameAutores"  required >
+            <input type="text" placeholder="Nacionalidad" name="nacionalidad" id="nacionalidad"  required >
+            <input type="submit"  value="Enviar" class="btn btn-success btn-sm">
+        </form>
+{/if}
      <h2 class="users">{$error}</h2>
 
         {* Si sos admin muestro la lista de users *}
@@ -113,7 +108,7 @@
                          {* Con el if miro en que cuenta estoy iniciado y deshabilito los botones de borrar,agregar y quitar admin *}
                          {if $smarty.session.email == {$users->email}}
                              {$users->email}  (Iniciado con esta cuenta)
-                             {* Si ya es admin agrego boton de quitaar dmin *}
+                             {* Si ya es admin agrego boton de quitaar admin *}
                              {else if $users->administrador == 'userAdmin'}
                                  {$users->email}
                             <button class="btn btn-danger btn-sm">

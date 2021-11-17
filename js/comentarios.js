@@ -9,15 +9,14 @@ const apiUrl = "http://localhost/Web2/TPE2/api/libreriaApi/";
 let app = new Vue({
     el: "#app",
     data: {
-        titulo: "Lista de  Comentarios",
+        titulo: "Lista de  Comentarios y Puntajes",
         arrComentarios: [],
     },
     methods: {
         btnborrar: function () {
-            let id_valoracion = 52;
+            let id_valoracion = 52;  //El 52 esta puesto solo como ejemplo
             borrarComentario(id_valoracion);
         }
-
     }
 });
 
@@ -88,5 +87,6 @@ async function borrarComentario(id_valoracion) {
         console.log(e);
     }
 }
+
 
 comentariosPorLibro();
