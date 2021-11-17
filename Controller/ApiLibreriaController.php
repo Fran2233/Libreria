@@ -4,7 +4,7 @@ require_once "./Model/valoracionModel.php";
 require_once "./View/ApiView.php";
 
 require_once "./Helpers/AuthHelper.php";
-class ApiLibreriaController
+class ApiValoracionController
 {
     private $model;
     private $view;
