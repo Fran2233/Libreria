@@ -56,19 +56,19 @@ class ApiValoracionController
     }
 
     // Edito el libro
-    public function editLibro($params = null)
-    {
-        $idLibro = $params[':ID'];
-        $body = $this->getBody();
-        $libro = $this->modelLibros->getLibro($idLibro);
-        // Chequeo que el libro y los parametros
-        if ($libro && ($body->titulo && $body->anio_publicado && $body->genero && $body->fk_id_autor)) {
-            $this->modelLibros->editarLibro($idLibro, $body->titulo, $body->anio_publicado, $body->genero, $body->fk_id_autor);
-            return $this->view->response("El libro se edito con exito!", 200);
-        } else {
-            return $this->view->response("Error al editar libro", 404);
-        }
-    }
+    // public function editLibro($params = null)
+    // {
+    //     $idLibro = $params[':ID'];
+    //     $body = $this->getBody();
+    //     $libro = $this->modelLibros->getLibro($idLibro);
+    //     // Chequeo que el libro y los parametros
+    //     if ($libro && ($body->titulo && $body->anio_publicado && $body->genero && $body->fk_id_autor)) {
+    //         $this->modelLibros->editarLibro($idLibro, $body->titulo, $body->anio_publicado, $body->genero, $body->fk_id_autor);
+    //         return $this->view->response("El libro se edito con exito!", 200);
+    //     } else {
+    //         return $this->view->response("Error al editar libro", 404);
+    //     }
+    // }
 
 
 

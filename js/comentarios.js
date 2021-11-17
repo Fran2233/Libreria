@@ -14,7 +14,7 @@ let app = new Vue({
     },
     methods: {
         btnborrar: function () {
-            let id_valoracion = 69;  //El 52 esta puesto solo como ejemplo
+            let id_valoracion = 52;  //El 52 esta puesto solo como ejemplo
             borrarComentario(id_valoracion);
         }
     }
