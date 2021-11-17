@@ -1,7 +1,7 @@
 <?php
 
 require_once 'libs/Router.php';
-require_once 'Controller/ApiLibreriaController.php';
+require_once 'Controller/ApiValoracionController.php';
 
 // crea el router
 $router = new Router();
