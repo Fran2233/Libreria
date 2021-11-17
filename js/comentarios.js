@@ -14,8 +14,8 @@ let app = new Vue({
     },
     methods: {
         btnborrar: function () {
-            let id_valoracion = 52;  //El 52 esta puesto solo como ejemplo
-            borrarComentario(id_valoracion);
+            let id_valoracion = 52;          //El 52 esta puesto solo como ejemplo, de momento este metodo funciona solo 
+            borrarComentario(id_valoracion); //que no puedo obtener el ID de la valoracion
         }
     }
 });
