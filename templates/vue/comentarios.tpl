@@ -5,7 +5,6 @@
                Comentario : {{comentarios.comentario}} // 
                Puntaje : {{comentarios.puntaje}}
                <button v-on:click="btnborrar" :data-id_valoracion="comentarios.id_valoracion">Borrar</button>
-               {{comentarios.id_valoracion}}
             </li>       
         </ul>
 {/literal}

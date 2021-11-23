@@ -62,10 +62,9 @@
                         <input type="submit"  value="Enviar" class="btn btn-success btn-sm">    
                     </form>
     {/if}
-
+                    <h2>Lista de autores: </h2>
 <ul id="listAutores"> 
-        {* Muestro Autores *}
-        <h2>Lista de autores: </h2>
+        {* Muestro Autores *}  
         {foreach from=$autores item=$autor}
             <a href="viewLibroAutor/{$autor->nameAutores}" class="fw-bolder">
                 <li>

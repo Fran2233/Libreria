@@ -10,7 +10,7 @@
         <label for="comentario" >Comentario:</label>
         <textarea name="comentario" id="comentario" ></textarea>
         <label for="puntaje">Puntaje :</label>
-        <input type="number"  name="puntaje" id="puntaje" class="btn btn-success btn-sm">
+        <input type="number"  name="puntaje" id="puntaje" class="btn btn-success btn-sm" min="0" max="5" required>
         <input type="number"  value="{$libro->id_libro}" name="fk_id_libro" class="btn btn-success btn-sm hidden">
         <input type="submit"  class="btn btn-success btn-sm" id="btn-carga">
     </form>
