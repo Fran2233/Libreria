@@ -4,7 +4,9 @@
     <h2>Autor:{$libro->nameAutores}</h2>
     <h3>Año de publicación:{$libro->anio_publicado}</h3>
     <h3>Género:{$libro->genero}</h3>
-    
+    {if $smarty.session.email}
+        logeado!!!
+    {/if}
     <h3>Crear Comentario</h3>
     <form action="" id="formApi">
         <label for="comentario" >Comentario:</label>

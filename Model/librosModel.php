@@ -65,5 +65,4 @@ class libreriaModel
         $obtener = $this->db->prepare("UPDATE libros SET titulo=?,anio_publicado=?,genero=?,fk_id_autor=? WHERE id_libro=?");
         $obtener->execute(array($titulo, $anio_publicado, $genero, $fk_id_autor, $id));
     }
-
 }

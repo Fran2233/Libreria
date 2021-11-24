@@ -18,10 +18,10 @@ $router->addRoute('libreriaApi/:ID', 'GET', 'ApiValoracionController', 'comentar
 $router->addRoute('libreriaApi/:ID', 'DELETE', 'ApiValoracionController', 'borrarComentario');
 
 // Add Comentario
-$router->addRoute('libreriaApi', 'POST','ApiValoracionController', 'addComentario');
+$router->addRoute('libreriaApi', 'POST', 'ApiValoracionController', 'addComentario');
 
 // Editar comentario
-$router->addRoute('libreriaApi/:ID', 'PUT','ApiValoracionController', 'editLibro');
+$router->addRoute('libreriaApi/:ID', 'PUT', 'ApiValoracionController', 'editLibro');
 
 // rutea
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

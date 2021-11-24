@@ -36,7 +36,7 @@ class usuariosController
 
         $user = $this->model->getUser($email);
 
-        if ($user && password_verify($password, $user->user_password)) { 
+        if ($user && password_verify($password, $user->user_password)) {
             if ($user->administrador === 'userAdmin') {
                 session_start();
                 $_SESSION["email"] = $email;
@@ -48,7 +48,6 @@ class usuariosController
                 $_SESSION["administrador"] = 'no-admin';
                 $this->viewHome->mostrarHome();
             }
-            
         } else {
             $this->view->showLogin("Email o Password incorrectos");
         }

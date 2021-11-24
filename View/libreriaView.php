@@ -42,5 +42,4 @@ class libreriaView
         $this->smarty->assign('autores', $autores);
         $this->smarty->display('templates/addLibro.tpl');
     }
-
 }

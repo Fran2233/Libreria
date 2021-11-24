@@ -20,7 +20,7 @@ class autoresController
         $this->authHelper = new AuthHelper();
     }
 
- 
+
     //Agregar Autor
     public function agregarAutor()
     {

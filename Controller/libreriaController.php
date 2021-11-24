@@ -74,13 +74,12 @@ class libreriaController
     {
         $this->authHelper->checkloggedIn();
         $comentarios = $this->checkValoracion($id);
-        if ($comentarios){
+        if ($comentarios) {
             $this->view->showError("Ese libro tiene comentarios y puntajes asignados por eso no puede eliminarse");
         } else {
             $this->modelLibros->borrarLibro($id);
             $this->view->mostrarHome();
         }
-        
     }
 
 

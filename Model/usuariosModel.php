@@ -49,7 +49,8 @@ class usuariosModel
 
 
     // Agregar o quitar Admin
-    public function Admin($admin, $id){
+    public function Admin($admin, $id)
+    {
         $obtener = $this->db->prepare("UPDATE usuarios SET administrador=? WHERE id_usuario=?");
         $obtener->execute(array($admin, $id));
     }
