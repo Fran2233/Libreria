@@ -22,9 +22,10 @@ class libreriaView
     }
 
     //    Muestro libro por ID
-    public function mostrarLibroID($libro)
+    public function mostrarLibroID($libro,$logeado = null)
     {
         $this->smarty->assign('libro', $libro);
+        $this->smarty->assign('logeado', $logeado);
         $this->smarty->display('templates/detallesLibro.tpl');
     }
 

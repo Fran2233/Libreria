@@ -14,8 +14,8 @@ let app = new Vue({
     },
     methods: {
         btnborrar: function () {
-            let id_valoracion = event.target.getAttribute('data-id_valoracion');          
-            borrarComentario(id_valoracion); 
+            let id_valoracion = event.target.getAttribute('data-id_valoracion');
+            borrarComentario(id_valoracion);
         }
     }
 });
@@ -51,7 +51,9 @@ async function postComentario() {
             "body": JSON.stringify(valoracion)
         });
         if (res.status === 200) {
-            console.log(valoracion)
+            console.log(valoracion);
+        } else {
+            console.log("Error al crear comentario");
         }
 
 
@@ -79,8 +81,10 @@ async function borrarComentario(id_valoracion) {
             "method": "DELETE"
         });
         if (res.status === 200) {
-            console.log("se borro")
+            console.log("se borro");
             comentariosPorLibro();
+        } else{
+            console.log("error al borrar")
         }
 
     } catch (e) {

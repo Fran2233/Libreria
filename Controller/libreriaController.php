@@ -43,8 +43,15 @@ class libreriaController
     //Descripción de un libro especifico
     public function viewLibro($id)
     {
-        $libro = $this->modelLibros->getLibro($id);
-        $this->viewLibreria->mostrarLibroID($libro);
+        session_start();
+        if (isset($_SESSION["email"])) {
+            $logeado = true;
+            $libro = $this->modelLibros->getLibro($id);
+            $this->viewLibreria->mostrarLibroID($libro, $logeado);
+        } else {
+            $libro = $this->modelLibros->getLibro($id);
+            $this->viewLibreria->mostrarLibroID($libro);
+        }
     }
 
     // Lista de libros por Autor
