@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2021 a las 00:05:54
+-- Tiempo de generación: 24-11-2021 a las 02:19:40
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -56,30 +56,31 @@ CREATE TABLE `libros` (
   `titulo` varchar(45) NOT NULL,
   `anio_publicado` int(11) NOT NULL,
   `genero` varchar(45) NOT NULL,
-  `fk_id_autor` int(11) NOT NULL
+  `fk_id_autor` int(11) NOT NULL,
+  `imagen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `libros`
 --
 
-INSERT INTO `libros` (`id_libro`, `titulo`, `anio_publicado`, `genero`, `fk_id_autor`) VALUES
-(6, 'Las brujas', 1985, 'Novela', 1),
-(8, 'Matilda', 1988, 'Novela', 1),
-(22, 'El Superzorro', 1977, 'Novela', 1),
-(23, 'La maravillosa medicina de Jorge', 1983, 'Novela', 1),
-(24, 'Charlie y la fabrica de chocolates', 1978, 'Novela', 1),
-(25, 'La familia Delasoga', 1985, 'Cuento', 11),
-(26, 'Doña Clementina Queridita, la achicadora', 1985, 'Cuento', 11),
-(27, 'Tengo un mounstruo en el bolsillo', 1988, 'Novela', 11),
-(28, 'Historia de un amor exagerado', 1987, 'Novela', 11),
-(29, 'Maruja', 1989, 'Novela', 10),
-(30, 'Historia a Fernandez', 1994, 'Cuento', 10),
-(31, '¡Socorro! 12 cuentos para caerse del miedo', 1988, 'Cuento', 9),
-(32, 'El túnel', 1993, 'Cuento', 8),
-(33, 'Willy el tímido', 1991, 'Cuento', 8),
-(34, 'Donde viven los monstruos', 1977, 'Cuento', 12),
-(45, 'PRUEBA', 1, 'prueba1', 1);
+INSERT INTO `libros` (`id_libro`, `titulo`, `anio_publicado`, `genero`, `fk_id_autor`, `imagen`) VALUES
+(6, 'Las brujas', 1985, 'Novela', 1, ''),
+(8, 'Matilda', 1988, 'Novela', 1, ''),
+(22, 'El Superzorro', 1977, 'Novela', 1, ''),
+(23, 'La maravillosa medicina de Jorge', 1983, 'Novela', 1, ''),
+(24, 'Charlie y la fabrica de chocolates', 1978, 'Novela', 1, ''),
+(25, 'La familia Delasoga', 1985, 'Cuento', 11, ''),
+(26, 'Doña Clementina Queridita, la achicadora', 1985, 'Cuento', 11, ''),
+(27, 'Tengo un mounstruo en el bolsillo', 1988, 'Novela', 11, ''),
+(28, 'Historia de un amor exagerado', 1987, 'Novela', 11, ''),
+(29, 'Maruja', 1989, 'Novela', 10, ''),
+(30, 'Historia a Fernandez', 1994, 'Cuento', 10, ''),
+(31, '¡Socorro! 12 cuentos para caerse del miedo', 1988, 'Cuento', 9, ''),
+(32, 'El túnel', 1993, 'Cuento', 8, ''),
+(33, 'Willy el tímido', 1991, 'Cuento', 8, ''),
+(34, 'Donde viven los monstruos', 1977, 'Cuento', 12, ''),
+(45, 'PRUEBA', 1, 'prueba1', 1, '');
 
 -- --------------------------------------------------------
 
@@ -102,9 +103,7 @@ INSERT INTO `usuarios` (`id_usuario`, `email`, `user_password`, `administrador`)
 (22, 'test1@gmail.com', '$2y$10$PGkJvs0r7ogWemWdL.SMzejrrpKmRun3mCn0.Ny014dXiVL5g7.tW', 'userAdmin'),
 (23, 'test2@gmail.com', '$2y$10$T6ezdu1OKnF2QLOe1.brIubCxcB2B2BoqAs7GEKXb59lfRoRuqOdC', 'userAdmin'),
 (24, 'test3@gmail.com', '$2y$10$PPlXr.9A.QrIAT3DCnzGRef7LFotUzHx3eQTZ1h4P/Eo0hqr.07De', 'no-admin'),
-(25, 'test4@gmail.com', '$2y$10$oJjh0c6O5EsND4WO2pHcyu3eGj1jmuAyn5Su2dU2vK02zwDTdRnc2', 'no-admin'),
-(28, 'test11@gmail.com', '$2y$10$I75i92VrMA8FmpLGGeqVHelkpQL3GBxmYVX12XAJuEENYvsny8rfm', 'no-admin'),
-(30, 'test99@gmail.com', '$2y$10$wqIoN5Vdx/mqVyZJVRsCCO8zK8obXSNkGer/oTrNXb0kA6HyaW29C', 'no-admin');
+(25, 'test4@gmail.com', '$2y$10$oJjh0c6O5EsND4WO2pHcyu3eGj1jmuAyn5Su2dU2vK02zwDTdRnc2', 'no-admin');
 
 -- --------------------------------------------------------
 
@@ -124,10 +123,7 @@ CREATE TABLE `valoracion` (
 --
 
 INSERT INTO `valoracion` (`id_valoracion`, `puntaje`, `comentario`, `fk_id_libro`) VALUES
-(44, 5, 'Comentario MATILDA', 8),
-(46, 5, 'Comentario LAs Brujas 2', 6),
-(67, 0, '', 6),
-(68, 0, '', 6);
+(80, 5, 'Prueba', 6);
 
 --
 -- Índices para tablas volcadas
@@ -179,13 +175,13 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `valoracion`
 --
 ALTER TABLE `valoracion`
-  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- Restricciones para tablas volcadas
