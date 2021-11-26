@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2021 a las 02:19:40
+-- Tiempo de generación: 26-11-2021 a las 23:03:22
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -79,8 +79,7 @@ INSERT INTO `libros` (`id_libro`, `titulo`, `anio_publicado`, `genero`, `fk_id_a
 (31, '¡Socorro! 12 cuentos para caerse del miedo', 1988, 'Cuento', 9, ''),
 (32, 'El túnel', 1993, 'Cuento', 8, ''),
 (33, 'Willy el tímido', 1991, 'Cuento', 8, ''),
-(34, 'Donde viven los monstruos', 1977, 'Cuento', 12, ''),
-(45, 'PRUEBA', 1, 'prueba1', 1, '');
+(34, 'Donde viven los monstruos', 1977, 'Cuento', 12, '');
 
 -- --------------------------------------------------------
 
@@ -101,9 +100,11 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `email`, `user_password`, `administrador`) VALUES
 (22, 'test1@gmail.com', '$2y$10$PGkJvs0r7ogWemWdL.SMzejrrpKmRun3mCn0.Ny014dXiVL5g7.tW', 'userAdmin'),
-(23, 'test2@gmail.com', '$2y$10$T6ezdu1OKnF2QLOe1.brIubCxcB2B2BoqAs7GEKXb59lfRoRuqOdC', 'userAdmin'),
 (24, 'test3@gmail.com', '$2y$10$PPlXr.9A.QrIAT3DCnzGRef7LFotUzHx3eQTZ1h4P/Eo0hqr.07De', 'no-admin'),
-(25, 'test4@gmail.com', '$2y$10$oJjh0c6O5EsND4WO2pHcyu3eGj1jmuAyn5Su2dU2vK02zwDTdRnc2', 'no-admin');
+(25, 'test4@gmail.com', '$2y$10$oJjh0c6O5EsND4WO2pHcyu3eGj1jmuAyn5Su2dU2vK02zwDTdRnc2', 'no-admin'),
+(33, 'test100@gmail.com', '$2y$10$FGpBV3eMSZa3ysPFaT35W.JTADSlv0z4KxvfkaAnbP6B9txMKHeae', 'no-admin'),
+(34, 'user1234@gmail.com', '$2y$10$mG.ax4gvJ.GE.VF7DayrHuglj.brOadcEI.AMmSWAEuV.SRCuCW/G', 'no-admin'),
+(36, 'francisco2233@gmail.com', '$2y$10$NWCwmqbr2sM3je3YqJt1ZORv9YY29v.6uElJs8ZlqqDyK9uwnIu7m', 'no-admin');
 
 -- --------------------------------------------------------
 
@@ -115,15 +116,17 @@ CREATE TABLE `valoracion` (
   `id_valoracion` int(11) NOT NULL,
   `puntaje` int(11) NOT NULL,
   `comentario` varchar(400) NOT NULL,
-  `fk_id_libro` int(11) NOT NULL
+  `fk_id_libro` int(11) NOT NULL,
+  `fk_id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `valoracion`
 --
 
-INSERT INTO `valoracion` (`id_valoracion`, `puntaje`, `comentario`, `fk_id_libro`) VALUES
-(80, 5, 'Prueba', 6);
+INSERT INTO `valoracion` (`id_valoracion`, `puntaje`, `comentario`, `fk_id_libro`, `fk_id_usuario`) VALUES
+(120, 5, 'Comentario de prueba', 6, 22),
+(121, 5, 'Prueba 2', 6, 22);
 
 --
 -- Índices para tablas volcadas
@@ -153,7 +156,8 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `valoracion`
   ADD PRIMARY KEY (`id_valoracion`),
-  ADD KEY `fk_id_libro` (`fk_id_libro`);
+  ADD KEY `fk_id_libro` (`fk_id_libro`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -175,13 +179,13 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `valoracion`
 --
 ALTER TABLE `valoracion`
-  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- Restricciones para tablas volcadas
@@ -197,7 +201,8 @@ ALTER TABLE `libros`
 -- Filtros para la tabla `valoracion`
 --
 ALTER TABLE `valoracion`
-  ADD CONSTRAINT `valoracion_ibfk_1` FOREIGN KEY (`fk_id_libro`) REFERENCES `libros` (`id_libro`);
+  ADD CONSTRAINT `valoracion_ibfk_1` FOREIGN KEY (`fk_id_libro`) REFERENCES `libros` (`id_libro`),
+  ADD CONSTRAINT `valoracion_ibfk_2` FOREIGN KEY (`fk_id_usuario`) REFERENCES `usuarios` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
