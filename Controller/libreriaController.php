@@ -45,9 +45,10 @@ class libreriaController
     {
         session_start();
         if (isset($_SESSION["email"])) {
+            $id_user = $_SESSION["id"];
             $logeado = true;
             $libro = $this->modelLibros->getLibro($id);
-            $this->viewLibreria->mostrarLibroID($libro, $logeado);
+            $this->viewLibreria->mostrarLibroID($libro, $logeado,$id_user);
         } else {
             $libro = $this->modelLibros->getLibro($id);
             $this->viewLibreria->mostrarLibroID($libro);

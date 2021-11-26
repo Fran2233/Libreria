@@ -13,8 +13,10 @@ let app = new Vue({
         arrComentarios: [],
     },
     methods: {
-        btnborrar: function () {
-            let id_valoracion = event.target.getAttribute('data-id_valoracion');
+        btnborrar: function (e) {
+            e.preventDefault();
+            // let id_valoracion = event.target.getAttribute('data-id_valoracion');
+            let id_valoracion = this.getAttribute('data-id_valoracion');
             borrarComentario(id_valoracion);
         }
     }
@@ -39,10 +41,12 @@ async function postComentario() {
     let comentario = formData.get('comentario');
     let puntaje = formData.get('puntaje');
     let fk_id_libro = formData.get('fk_id_libro');
+    let fk_id_usuario = formData.get('fk_id_usuario');
     let valoracion = {
         "puntaje": puntaje,
         "comentario": comentario,
         "fk_id_libro": fk_id_libro,
+        "fk_id_usuario": fk_id_usuario,
     }
     try {
         let res = await fetch(apiUrl, {
@@ -83,7 +87,7 @@ async function borrarComentario(id_valoracion) {
         if (res.status === 200) {
             console.log("se borro");
             comentariosPorLibro();
-        } else{
+        } else {
             console.log("error al borrar")
         }
 

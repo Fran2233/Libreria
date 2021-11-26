@@ -41,11 +41,13 @@ class usuariosController
                 session_start();
                 $_SESSION["email"] = $email;
                 $_SESSION["administrador"] = $user->administrador;
+                $_SESSION["id"] = $user->id_usuario;
                 $this->viewHome->mostrarHome();
             } else {
                 session_start();
                 $_SESSION["email"] = $email;
                 $_SESSION["administrador"] = 'no-admin';
+                $_SESSION["id"] = $user->id_usuario;
                 $this->viewHome->mostrarHome();
             }
         } else {
@@ -77,7 +79,8 @@ class usuariosController
 
     // borrar user
     public function deleteUser($id)
-    {
+    { 
+        // agregar isset
         $this->model->deleteUser($id);
         $this->viewHome->mostrarHome();
     }

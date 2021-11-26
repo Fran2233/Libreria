@@ -52,7 +52,7 @@ class ApiValoracionController
         // Obtengo el body del request (json)
         $body = $this->getBody();
         // Le mando los parametros con el objeto BODY
-        $this->model->cargarComentario($body->puntaje, $body->comentario, $body->fk_id_libro);
+        $this->model->cargarComentario($body->puntaje, $body->comentario, $body->fk_id_libro, $body->fk_id_usuario);
     }
 
 

@@ -13,6 +13,7 @@
         <label for="puntaje">Puntaje :</label>
         <input type="number"  name="puntaje" id="puntaje" class="btn btn-success btn-sm" min="0" max="5" required>
         <input type="number"  value="{$libro->id_libro}" name="fk_id_libro" class="btn btn-success btn-sm hidden">
+        <input type="number"  value="{$id_user}" name="fk_id_usuario" class="hidden">
         <input type="submit"  class="btn btn-success btn-sm" id="btn-carga">
     </form>
         <div id="app">
