@@ -15,8 +15,8 @@ let app = new Vue({
     methods: {
         btnborrar: function (e) {
             e.preventDefault();
-            // let id_valoracion = event.target.getAttribute('data-id_valoracion');
-            let id_valoracion = this.getAttribute('data-id_valoracion');
+            let id_valoracion = event.target.getAttribute('data-id_valoracion');
+            // let id_valoracion = this.getAttribute('data-id_valoracion');
             borrarComentario(id_valoracion);
         }
     }
